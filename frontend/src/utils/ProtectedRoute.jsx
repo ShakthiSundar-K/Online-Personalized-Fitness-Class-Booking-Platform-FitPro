@@ -1,7 +1,9 @@
 import React from "react";
+import { Navigate } from "react-router-dom";
+function ProtectedRoute({ children }) {
+  let token = sessionStorage.getItem("token");
 
-function ProtectedRoute() {
-  return <div></div>;
+  return token ? children : <Navigate to='/' />;
 }
 
 export default ProtectedRoute;

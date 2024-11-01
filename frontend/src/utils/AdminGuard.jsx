@@ -1,7 +1,9 @@
 import React from "react";
+import { Navigate } from "react-router-dom";
+function AdminGuard({ children }) {
+  let role = sessionStorage.getItem("role");
 
-function AdminGuard() {
-  return <div></div>;
+  return role === "admin" ? children : <Navigate to='/login' />;
 }
 
 export default AdminGuard;

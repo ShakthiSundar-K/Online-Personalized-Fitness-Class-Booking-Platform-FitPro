@@ -20,6 +20,7 @@ const UserSchema = new mongoose.Schema(
         message: (props) => `${props.value} is not a valid email!`,
       },
     },
+    profilepic: { type: String },
     password: {
       type: String,
       required: true,
@@ -38,18 +39,16 @@ const UserSchema = new mongoose.Schema(
       },
     },
     preferences: {
-      classTypes: {
-        type: [String],
-        enum: ["yoga", "strength", "cardio", "dance", "pilates", "boxing"],
-      },
-      goals: {
-        type: [String],
-        enum: ["weight loss", "muscle gain", "flexibility", "stamina"],
-      },
-      availability: {
-        type: [String],
-        enum: ["morning", "afternoon", "evening"],
-      },
+      type: [String],
+      enum: ["yoga", "strength", "cardio", "dance", "pilates", "boxing"],
+    },
+    goals: {
+      type: [String],
+      enum: ["weight loss", "muscle gain", "flexibility", "stamina"],
+    },
+    availability: {
+      type: [String],
+      enum: ["morning", "afternoon", "evening"],
     },
     resetPasswordToken: { type: String, default: undefined },
     resetPasswordExpire: { type: Date, default: undefined },
