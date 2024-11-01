@@ -4,6 +4,7 @@ import NavBar from "../../components/common/NavBar";
 import FeaturesSection from "../../components/common/FeaturesSection";
 import BookCta from "../../components/common/BookCta";
 import Footer from "../../components/common/Footer";
+import Gallery from "../../components/common/Gallery";
 
 function Home() {
   return (
@@ -11,6 +12,7 @@ function Home() {
       <NavBar />
       <Hero />
       <FeaturesSection />
+      <Gallery />
       <BookCta />
       <Footer />
     </div>

@@ -4,7 +4,7 @@ import backgroundImage from "../../assets/appointment.jpg"; // Update the path a
 function BookCta() {
   return (
     <div
-      className='w-full bg-center bg-cover h-[34rem]'
+      className='w-full bg-center bg-cover h-[34rem] mt-3'
       style={{ backgroundImage: `url(${backgroundImage})` }} // Use the imported image here
     >
       <div className='flex items-center justify-center w-full h-full font-oswald'>

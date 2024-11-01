@@ -143,7 +143,8 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className='mt-8 border-t border-gray-800 pt-4 text-center text-gray-500 text-sm'>
-          Copyright ©2024 All rights reserved | This website is made by&nbsp;
+          Copyright ©2024 All rights reserved | This website is made
+          by&nbsp;&nbsp;
           <Link
             to='/about'
             className='no-underline text-orange-500 hover:underline'
