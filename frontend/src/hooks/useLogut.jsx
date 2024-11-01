@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 function useLogout() {
@@ -6,7 +5,7 @@ function useLogout() {
   return () => {
     sessionStorage.clear();
     toast.success("Logout Successfull");
-    navigate("/login");
+    navigate("/");
   };
 }
 

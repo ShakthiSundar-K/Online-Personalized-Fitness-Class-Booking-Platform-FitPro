@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import logo from "../../assets/horizontallogo.png";
-import api from "../../service/ApiService"; // Adjust the import path if necessary
-import ApiRoutes from "../../utils/ApiRoutes"; // Adjust the import path if necessary
+import api from "../../service/ApiService";
+import ApiRoutes from "../../utils/ApiRoutes";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
@@ -24,12 +24,12 @@ const SignIn = () => {
 
       toast.success(response.message);
 
-      // Optionally, store the token and other data in session storage
+      // store the token and other data in session storage
       sessionStorage.setItem("token", response.token);
       sessionStorage.setItem("role", response.role);
 
-      // Redirect to the desired page after successful login
-      navigate("/home"); // Adjust the route as needed
+      // Redirect to the login page after successful login
+      navigate("/home");
     } catch (error) {
       toast.error(
         error.response.data.message || "Error occurred! Please try again!"

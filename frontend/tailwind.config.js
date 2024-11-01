@@ -5,17 +5,18 @@ export default {
     extend: {
       backgroundImage: {
         "app-bg":
-          "url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Fphotos%2Fnoise-texture&psig=AOvVaw3S6cYeyZEPET292g59noS-&ust=1730527935956000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCIjRi4m9uokDFQAAAAAdAAAAABAE')",
-      },
-      colors: {
-        appColor: "#3c3f45", // Custom color
+          "url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fphotos%2Fnoise-texture&psig=AOvVaw3S6cYeyZEPET292g59noS-&ust=1730527935956000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCIjRi4m9uokDFQAAAAAdAAAAABAJ')",
       },
       // Add custom utilities
       backgroundColor: {
-        app: "#3c3f45",
+        app: "#151515",
       },
       mixBlendMode: {
         overlay: "overlay",
+      },
+      fontFamily: {
+        inter: ["'Inter'", "sans-serif"], // Add Inter font
+        oswald: ["'Oswald'", "sans-serif"], // Add Oswald font
       },
     },
   },
