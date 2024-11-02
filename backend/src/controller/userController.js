@@ -33,57 +33,15 @@ const deleteUserAccount = async (req, res) => {
 
 const viewAllClasses = async (req, res) => {
   try {
-    // Use the aggregation framework to perform lookups
-    const classes = await Class.aggregate([
-      {
-        $match: { status: "available" }, // Match classes with 'available' status
-      },
-      {
-        $lookup: {
-          from: "Trainers", // Collection to join
-          localField: "trainerId", // Field from the input documents
-          foreignField: "userId", // Field from the documents of the "from" collection
-          as: "trainerInfo", // Output array field
-        },
-      },
-      {
-        $unwind: {
-          path: "$trainerInfo", // Unwind to deconstruct the array field
-          preserveNullAndEmptyArrays: true, // Keep documents without matching trainers
-        },
-      },
-      {
-        $lookup: {
-          from: "users", // Collection to join
-          localField: "trainerInfo.userId", // Field from the input documents
-          foreignField: "id", // Field from the documents of the "from" collection
-          as: "userInfo", // Output array field
-        },
-      },
-      {
-        $unwind: {
-          path: "$userInfo", // Unwind to deconstruct the array field
-          preserveNullAndEmptyArrays: true, // Keep documents without matching users
-        },
-      },
-      {
-        $project: {
-          classId: 1,
-          className: 1,
-          classType: 1,
-          trainerName: 1, // Include trainer's name
-          // Include other fields as needed
-        },
-      },
-    ]);
+    // Fetch all classes that are currently available
+    const classes = await Class.find({ status: "available" }); // Assuming 'available' is the status for booking
 
     if (classes.length === 0) {
       return res.status(404).json({ message: "No available classes found" });
     }
 
-    res.json(classes); // Return the list of classes with trainer names
+    res.json(classes); // Return the list of available classes
   } catch (error) {
-    console.error("Error in viewAllClasses:", error);
     res.status(500).json({ message: error.message });
   }
 };
@@ -279,15 +237,18 @@ const cancelBooking = async (req, res) => {
 
 const searchClassesByName = async (req, res) => {
   try {
-    const { name } = req.query; // Now using 'name' as the query parameter
+    const { term } = req.query; // Using 'term' as the query parameter for flexibility
 
-    if (!name) {
+    if (!term) {
       return res.status(400).json({ message: "Search term is required" });
     }
 
-    // Perform case-insensitive search by class name
+    // Perform case-insensitive search by class name or class type (category)
     const classes = await Class.find({
-      className: { $regex: new RegExp(name, "i") },
+      $or: [
+        { className: { $regex: new RegExp(term, "i") } },
+        { classType: { $regex: new RegExp(term, "i") } },
+      ],
     });
 
     if (classes.length === 0) {
@@ -298,21 +259,15 @@ const searchClassesByName = async (req, res) => {
 
     res.status(200).json(classes);
   } catch (error) {
-    console.error(`Error in searchClassesByName: ${error.message}`);
+    console.error(`Error in searchClassesByNameOrCategory: ${error.message}`);
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
 
 const filterClasses = async (req, res) => {
   try {
-    const { category, date, startTime, endTime, minPrice, maxPrice } =
-      req.query; // Extract filter parameters
+    const { date, startTime, endTime, minPrice, maxPrice } = req.query; // Extract filter parameters
     const filterCriteria = {};
-
-    // Filter by category (classType)
-    if (category) {
-      filterCriteria.classType = category; // Assuming classType is the field representing category
-    }
 
     // Filter by specific date
     if (date) {
@@ -320,11 +275,8 @@ const filterClasses = async (req, res) => {
     }
 
     // Filter by time range within the specified date
-    if (startTime || endTime) {
-      filterCriteria["timeSlot.startTime"] = startTime
-        ? { $gte: startTime }
-        : {};
-      filterCriteria["timeSlot.endTime"] = endTime ? { $lte: endTime } : {};
+    if (startTime) {
+      filterCriteria["timeSlot.startTime"] = { $gte: startTime };
     }
 
     // Filter by price range

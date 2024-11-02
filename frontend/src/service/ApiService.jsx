@@ -12,6 +12,7 @@ api.interceptors.request.use(
   (config) => {
     //change the request object
     const token = sessionStorage.getItem("token");
+    // console.log("Token:", token);
     if (config.authenticate === true && token)
       config.headers.Authorization = `Bearer ${token}`;
 

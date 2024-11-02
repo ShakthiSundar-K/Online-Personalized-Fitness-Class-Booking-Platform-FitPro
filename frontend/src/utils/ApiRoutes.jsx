@@ -19,6 +19,18 @@ const ApiRoutes = {
     path: "/users/viewAllClasses",
     authenticate: true,
   },
+  VIEW_FILTERED_CLASSES: {
+    path: "/users/filterClasses",
+    authenticate: true,
+  },
+  VIEW_SEARCHED_CLASSES: {
+    path: "/users/searchClassesByName",
+    authenticate: true,
+  },
+  BOOK_CLASS: {
+    path: "/users/bookClass/:classId",
+    authenticate: true,
+  },
 };
 
 export default ApiRoutes;

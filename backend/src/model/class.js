@@ -19,6 +19,7 @@ const ClassSchema = new mongoose.Schema(
       startTime: { type: String },
       endTime: { type: String },
     },
+    classPic: { type: String },
     capacity: { type: Number },
     price: { type: Number },
     bookedCount: { type: Number, default: 0 },
