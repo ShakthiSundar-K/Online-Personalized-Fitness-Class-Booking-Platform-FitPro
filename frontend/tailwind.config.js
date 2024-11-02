@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      colors: {
+        "custom-blue": "#1fb6ff",
+      },
       backgroundImage: {
         "app-bg":
           "url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fphotos%2Fnoise-texture&psig=AOvVaw3S6cYeyZEPET292g59noS-&ust=1730527935956000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCIjRi4m9uokDFQAAAAAdAAAAABAJ')",
@@ -20,5 +23,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
 };

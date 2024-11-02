@@ -42,7 +42,7 @@ const Gallery = () => {
       </div>
 
       {/* Second Grid */}
-      <div className='grid grid-cols-4 gap-2'>
+      <div className='grid grid-cols-4 gap-2 mb-6'>
         <div className='col-span-1'>
           <img
             src={images[3]}

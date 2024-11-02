@@ -17,7 +17,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className='py-16  bg-black'>
+    <section className='py-8  bg-black'>
       <div className='container mx-auto font-sans'>
         <h2 className='text-center mb-12 text-xl font-montserrat font-semibold font-oswald text-orange-500 '>
           Testimonial <br />

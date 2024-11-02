@@ -5,6 +5,7 @@ import FeaturesSection from "../../components/common/FeaturesSection";
 import BookCta from "../../components/common/BookCta";
 import Footer from "../../components/common/Footer";
 import Gallery from "../../components/common/Gallery";
+import ContactInfo from "../../components/common/ContactInfo";
 
 function Home() {
   return (
@@ -14,6 +15,7 @@ function Home() {
       <FeaturesSection />
       <Gallery />
       <BookCta />
+      <ContactInfo />
       <Footer />
     </div>
   );

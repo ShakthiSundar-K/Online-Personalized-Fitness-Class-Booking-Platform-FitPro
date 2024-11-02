@@ -10,7 +10,9 @@ const FeatureCard = ({ icon: Icon, title, description }) => {
         <Icon className='text-orange-500 text-3xl' />
       </div>
       <h3 className='text-xl font-semibold mb-2'>{title}</h3>
-      <p className='text-gray-400 text-sm text-center px-3'>{description}</p>
+      <p className='text-gray-400 text-sm text-center px-8 md:px-3'>
+        {description}
+      </p>
     </div>
   );
 };

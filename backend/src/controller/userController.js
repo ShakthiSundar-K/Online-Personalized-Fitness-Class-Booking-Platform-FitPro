@@ -33,15 +33,57 @@ const deleteUserAccount = async (req, res) => {
 
 const viewAllClasses = async (req, res) => {
   try {
-    // Fetch all classes that are currently available
-    const classes = await Class.find({ status: "available" }); // Assuming 'available' is the status for booking
+    // Use the aggregation framework to perform lookups
+    const classes = await Class.aggregate([
+      {
+        $match: { status: "available" }, // Match classes with 'available' status
+      },
+      {
+        $lookup: {
+          from: "Trainers", // Collection to join
+          localField: "trainerId", // Field from the input documents
+          foreignField: "userId", // Field from the documents of the "from" collection
+          as: "trainerInfo", // Output array field
+        },
+      },
+      {
+        $unwind: {
+          path: "$trainerInfo", // Unwind to deconstruct the array field
+          preserveNullAndEmptyArrays: true, // Keep documents without matching trainers
+        },
+      },
+      {
+        $lookup: {
+          from: "users", // Collection to join
+          localField: "trainerInfo.userId", // Field from the input documents
+          foreignField: "id", // Field from the documents of the "from" collection
+          as: "userInfo", // Output array field
+        },
+      },
+      {
+        $unwind: {
+          path: "$userInfo", // Unwind to deconstruct the array field
+          preserveNullAndEmptyArrays: true, // Keep documents without matching users
+        },
+      },
+      {
+        $project: {
+          classId: 1,
+          className: 1,
+          classType: 1,
+          trainerName: 1, // Include trainer's name
+          // Include other fields as needed
+        },
+      },
+    ]);
 
     if (classes.length === 0) {
       return res.status(404).json({ message: "No available classes found" });
     }
 
-    res.json(classes); // Return the list of available classes
+    res.json(classes); // Return the list of classes with trainer names
   } catch (error) {
+    console.error("Error in viewAllClasses:", error);
     res.status(500).json({ message: error.message });
   }
 };
