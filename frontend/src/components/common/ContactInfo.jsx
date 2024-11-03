@@ -18,7 +18,7 @@ const ContactInfo = () => {
   ];
 
   return (
-    <div className='flex flex-col md:flex-row justify-center bg-black md:py-0 px-8'>
+    <div className='flex flex-col md:flex-row justify-center bg-black md:py-0 px-8 mt-20'>
       {contactItems.map((item, index) => (
         <div
           key={index}

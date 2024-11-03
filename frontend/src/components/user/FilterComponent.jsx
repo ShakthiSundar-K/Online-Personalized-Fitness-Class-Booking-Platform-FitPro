@@ -44,6 +44,7 @@ function FilterComponent() {
       const response = await api.get(path, { params, authenticate });
 
       setClasses(Array.isArray(response) ? response : []);
+      setShowFilters(false); // Close filters after applying
     } catch (err) {
       console.error(err);
       setError("Failed to fetch filtered classes");
@@ -63,7 +64,7 @@ function FilterComponent() {
   };
 
   return (
-    <div className='filter-component p-4 md:p-8'>
+    <div className='filter-component p-4 md:px-32 md:py-10 bg-black relative'>
       <div className='flex items-center gap-4 mb-4'>
         <div className='relative flex-grow'>
           <FiFilter
@@ -76,52 +77,50 @@ function FilterComponent() {
             placeholder='Search for class names or class categories...'
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className='w-full pl-10 pr-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500'
+            className='w-full pl-10 pr-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500'
           />
         </div>
         <button
           onClick={searchClasses}
-          className='flex items-center px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600'
+          className='flex items-center px-4 py-2 bg-orange-500 text-white rounded-md '
         >
           <FiSearch className='mr-2' size={18} /> Search
         </button>
       </div>
 
       {showFilters && (
-        <div className='filters absolute top-20 left-1/2 transform -translate-x-1/2 w-11/12 max-w-md p-6 bg-white border rounded-md shadow-lg z-10'>
-          <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
+        <div className='filters absolute top-0 right-0 mt-12 w-60 p-4 bg-white border rounded-md shadow-lg z-10 transform transition-transform duration-200 ease-in-out sm:mt-10  sm:left-48 sm:w-64'>
+          <div className='grid grid-cols-1 gap-3'>
             <input
               type='date'
               value={selectedDate}
               onChange={(e) => setSelectedDate(e.target.value)}
-              className='p-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-full'
+              className='p-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 w-full'
             />
-
             <input
               type='time'
               value={selectedTime}
               onChange={(e) => setSelectedTime(e.target.value)}
-              className='p-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-full'
+              className='p-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 w-full'
             />
-
             <input
               type='number'
               placeholder='Min Price'
               value={minPrice}
               onChange={(e) => setMinPrice(e.target.value)}
-              className='p-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-full'
+              className='p-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 w-full'
             />
             <input
               type='number'
               placeholder='Max Price'
               value={maxPrice}
               onChange={(e) => setMaxPrice(e.target.value)}
-              className='p-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-full'
+              className='p-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 w-full'
             />
           </div>
           <button
             onClick={fetchFilteredClasses}
-            className='w-full mt-4 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600'
+            className='w-full mt-4 px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600'
           >
             Apply Filters
           </button>
@@ -129,10 +128,10 @@ function FilterComponent() {
       )}
 
       <h2 className='text-2xl font-bold mt-4'>Classes</h2>
-      <div className='class-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4'>
+      <div className='class-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-4 mx-8 md:mx-0'>
         {classes.length > 0 ? (
           classes.map((classData) => (
-            <ClassCard key={classData._id} classData={classData} />
+            <ClassCard key={classData._id} classData={classData} isBookable />
           ))
         ) : (
           <p>No classes found.</p>

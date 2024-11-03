@@ -35,6 +35,10 @@ const ApiRoutes = {
     path: "/payment/payment-success",
     authenticate: true,
   },
+  VIEW_MY_CLASSES: {
+    path: "/users/viewBookedClasses",
+    authenticate: true,
+  },
 };
 
 export default ApiRoutes;

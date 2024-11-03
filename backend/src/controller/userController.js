@@ -143,8 +143,16 @@ const viewBookedClasses = async (req, res) => {
           bookingId: booking._id,
           classId: selectedClass.classId,
           className: selectedClass.className,
+          classType: selectedClass.classType,
+          duration: selectedClass.duration,
+          timeSlot: selectedClass.timeSlot,
+          capacity: selectedClass.capacity,
+          price: selectedClass.price,
+          bookedCount: selectedClass.bookedCount,
+          classLink: selectedClass.classLink,
+          classPic: selectedClass.classPic,
+          status: booking.bookingStatus,
           classDate: booking.classDate,
-          bookingStatus: booking.bookingStatus,
           paymentStatus: booking.paymentStatus,
         });
       }
@@ -155,19 +163,27 @@ const viewBookedClasses = async (req, res) => {
     const upcoming = bookedClasses.filter((b) => new Date(b.classDate) > now);
     const history = bookedClasses.filter((b) => new Date(b.classDate) <= now);
 
-    // Find recommended classes based on user preferences
+    // Fetch the user's preferences and goals
     const user = await User.findOne({ id: userId });
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
 
+    const preferredTypes = user.preferences || [];
+    const goalTypes = user.goals || [];
+
+    // Find recommended classes based on both preferences and goals
     const recommendedClasses = await Class.find({
-      classType: { $in: user.preferences.classTypes },
-    });
+      $or: [
+        { classType: { $in: preferredTypes } },
+        { classType: { $in: goalTypes } },
+      ],
+    }).select("-createdAt -updatedAt -__v");
 
     // Return response with upcoming, history, and recommended classes
     res.json({ upcoming, history, recommended: recommendedClasses });
   } catch (error) {
+    console.error("Error in viewBookedClasses:", error);
     res.status(400).json({ message: error.message });
   }
 };
