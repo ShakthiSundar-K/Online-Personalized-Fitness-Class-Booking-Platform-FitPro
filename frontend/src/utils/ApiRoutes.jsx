@@ -59,6 +59,14 @@ const ApiRoutes = {
     path: "/users/viewTrainerById/:userId",
     authenticate: true,
   },
+  GET_USER_INFO_BY_ID: {
+    path: "/users/getUserInfoById/:userId",
+    authenticate: true,
+  },
+  EDIT_USER_PROFILE: {
+    path: "/users/editUserProfile/:userId",
+    authenticate: true,
+  },
 };
 
 export default ApiRoutes;

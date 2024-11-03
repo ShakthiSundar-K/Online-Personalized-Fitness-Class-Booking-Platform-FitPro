@@ -17,6 +17,7 @@ import TrainerManagement from "../routes/admin/TrainerManagement";
 import ClassManagement from "../routes/admin/ClassManagement";
 import PaymentSuccess from "../routes/common/PaymentSuccess";
 import TrainerInfo from "../components/trainer/TrainerInfo";
+import Profile from "../routes/user/Profile";
 
 const AppRoutes = [
   {
@@ -40,6 +41,14 @@ const AppRoutes = [
     element: (
       <ProtectedRoute>
         <Home />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/profile",
+    element: (
+      <ProtectedRoute>
+        <Profile />
       </ProtectedRoute>
     ),
   },

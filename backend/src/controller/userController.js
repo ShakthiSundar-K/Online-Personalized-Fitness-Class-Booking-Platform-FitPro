@@ -6,6 +6,22 @@ import Review from "../model/review.js";
 import Payment from "../model/payment.js";
 import { sendEmail } from "../service/emailService.js";
 
+const getUserInfoById = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    console.log("User ID from token:", userId);
+
+    const user = await User.findOne({ id: userId });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.status(200).json({ user });
+  } catch (error) {
+    console.error("Error in getUserInfoById:", error);
+    res.status(400).json({ message: error.message });
+  }
+};
+
 const editUserProfile = async (req, res) => {
   try {
     const { id } = req.user; // UUID
@@ -548,4 +564,5 @@ export default {
   viewAllClasses,
   filterTrainers,
   searchTrainerByName,
+  getUserInfoById,
 };

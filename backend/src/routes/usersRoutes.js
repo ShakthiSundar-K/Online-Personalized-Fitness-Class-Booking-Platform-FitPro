@@ -10,7 +10,16 @@ router.post("/login", authController.login);
 router.post("/forgotPassword", authController.forgotPassword);
 router.post("/resetPassword", authController.resetPassword);
 // User Profile Management
-router.put("/editUserProfile", verifyAuth, userController.editUserProfile);
+router.put(
+  "/editUserProfile/:userId",
+  verifyAuth,
+  userController.editUserProfile
+);
+router.get(
+  "/getUserInfoById/:userId",
+  verifyAuth,
+  userController.getUserInfoById
+);
 router.delete(
   "/deleteUserAccount",
   verifyAuth,

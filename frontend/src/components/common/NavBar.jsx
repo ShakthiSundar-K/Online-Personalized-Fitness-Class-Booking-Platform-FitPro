@@ -86,20 +86,6 @@ function NavBar() {
                     >
                       My profile
                     </Link>
-                    <Link
-                      to='/billing'
-                      className='block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700'
-                      role='menuitem'
-                    >
-                      Billing summary
-                    </Link>
-                    <Link
-                      to='/team-settings'
-                      className='block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700'
-                      role='menuitem'
-                    >
-                      Team settings
-                    </Link>
                   </div>
 
                   <div className='p-2'>
