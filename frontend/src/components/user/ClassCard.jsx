@@ -2,8 +2,9 @@ import React from "react";
 import api from "../../service/ApiService";
 import ApiRoutes from "../../utils/ApiRoutes";
 import toast from "react-hot-toast";
+// import paypalApi from "../../service/PaypalService";
 
-const ClassCard = ({ classData, onBookingSuccess }) => {
+const ClassCard = ({ classData }) => {
   const {
     classId,
     className,
@@ -17,18 +18,29 @@ const ClassCard = ({ classData, onBookingSuccess }) => {
   const placeholderImage =
     "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png";
 
-  const handleBookClass = async () => {
+  const handlePaymentAndBooking = async () => {
     try {
-      const path = ApiRoutes.BOOK_CLASS.path.replace(":classId", classId); // Replacing :classId with the actual classId
-      const authenticate = ApiRoutes.BOOK_CLASS.authenticate;
+      const path = ApiRoutes.CREATE_PAYPAL_PAYMENT.path.replace(
+        ":classId",
+        classId
+      );
+      const authenticate = ApiRoutes.CREATE_PAYPAL_PAYMENT.authenticate;
 
-      console.log(classId); // For debugging
-      await api.post(path, {}, { authenticate });
+      const response = await api.post(
+        path,
+        { amount: price },
+        { authenticate }
+      );
 
-      toast.success("Class booked successfully!");
+      if (response && response.approvalUrl) {
+        // Redirect the user to PayPal's approval page
+        window.location.href = response.approvalUrl;
+      } else {
+        toast.error("Failed to initiate payment. Please try again.");
+      }
     } catch (error) {
-      console.error("Error booking class:", error);
-      alert("Failed to book the class.");
+      console.error("Payment initiation error:", error);
+      toast.error("Error in initiating payment.");
     }
   };
 
@@ -61,7 +73,7 @@ const ClassCard = ({ classData, onBookingSuccess }) => {
           Booked: {bookedCount}
         </span>
         <button
-          onClick={handleBookClass}
+          onClick={handlePaymentAndBooking}
           className='px-3 py-1 text-xs font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500'
         >
           Book Now

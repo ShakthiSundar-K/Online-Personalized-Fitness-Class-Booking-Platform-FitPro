@@ -15,6 +15,7 @@ import AdminGuard from "./AdminGuard";
 import UserManagement from "../routes/admin/UserManagement";
 import TrainerManagement from "../routes/admin/TrainerManagement";
 import ClassManagement from "../routes/admin/ClassManagement";
+import PaymentSuccess from "../routes/common/PaymentSuccess";
 
 const AppRoutes = [
   {
@@ -70,6 +71,14 @@ const AppRoutes = [
     element: (
       <ProtectedRoute>
         <Services />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/paymentsuccess",
+    element: (
+      <ProtectedRoute>
+        <PaymentSuccess />
       </ProtectedRoute>
     ),
   },

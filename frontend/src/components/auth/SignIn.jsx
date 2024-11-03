@@ -21,12 +21,13 @@ const SignIn = () => {
       let response = await api.post(ApiRoutes.LOGIN.path, data, {
         authenticate: ApiRoutes.LOGIN.authenticate,
       });
-
+      console.log(response);
       toast.success(response.message);
 
       // store the token and other data in session storage
       sessionStorage.setItem("token", response.token);
       sessionStorage.setItem("role", response.role);
+      sessionStorage.setItem("id", response.id);
 
       // Redirect to the login page after successful login
       navigate("/home");

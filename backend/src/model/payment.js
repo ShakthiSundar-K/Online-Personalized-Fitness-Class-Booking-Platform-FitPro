@@ -7,7 +7,7 @@ const PaymentSchema = new mongoose.Schema(
     amount: { type: Number, required: true },
     paymentMethod: {
       type: String,
-      enum: ["card", "wallet", "netbanking", "UPI"],
+      enum: ["card", "wallet", "netbanking", "UPI", "paypal"],
     },
     paymentStatus: {
       type: String,

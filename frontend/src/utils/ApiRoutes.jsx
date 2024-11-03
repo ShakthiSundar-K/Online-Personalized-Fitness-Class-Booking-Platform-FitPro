@@ -27,8 +27,12 @@ const ApiRoutes = {
     path: "/users/searchClassesByName",
     authenticate: true,
   },
-  BOOK_CLASS: {
-    path: "/users/bookClass/:classId",
+  CREATE_PAYPAL_PAYMENT: {
+    path: "/payment/create-payment/:classId",
+    authenticate: true,
+  },
+  CONFIRM_PAYMENT_AND_BOOK_CLASS: {
+    path: "/payment/payment-success",
     authenticate: true,
   },
 };
