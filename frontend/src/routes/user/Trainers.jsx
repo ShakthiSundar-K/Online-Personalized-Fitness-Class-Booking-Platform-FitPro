@@ -1,7 +1,20 @@
 import React from "react";
+import NavBar from "../../components/common/NavBar";
+import ClassHero from "../../components/user/ClassHero";
+import TrainerFilterComponent from "../../components/trainer/TrainerFilterComponent";
+import ContactInfo from "../../components/common/ContactInfo";
+import Footer from "../../components/common/Footer";
 
 function Trainers() {
-  return <div></div>;
+  return (
+    <div className='relative bg-black'>
+      <NavBar />
+      <ClassHero />
+      <TrainerFilterComponent />
+      <ContactInfo />
+      <Footer />
+    </div>
+  );
 }
 
 export default Trainers;

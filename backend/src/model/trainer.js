@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const TrainerSchema = new mongoose.Schema(
   {
     userId: { type: String, required: true, ref: "User" },
+
     trainerName: { type: String },
     trainerEmail: { type: String },
     specializations: [String],

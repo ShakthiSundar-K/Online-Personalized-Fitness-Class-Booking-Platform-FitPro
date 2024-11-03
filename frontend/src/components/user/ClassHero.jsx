@@ -3,7 +3,7 @@ import classHero from "../../assets/classHero.jpg";
 function ClassHero() {
   return (
     <div
-      className='w-full h-[20rem] md:h-[30rem] lg:h-[30rem] bg-cover'
+      className='w-full h-[20rem] md:h-[25rem] lg:h-[30rem] bg-cover'
       style={{
         backgroundImage: `url(${classHero})`,
         backgroundSize: "cover",

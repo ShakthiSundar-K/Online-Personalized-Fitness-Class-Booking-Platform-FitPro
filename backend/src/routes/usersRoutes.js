@@ -44,5 +44,11 @@ router.get(
   verifyAuth,
   userController.searchClassesByName
 );
+router.get("/filterTrainers", verifyAuth, userController.filterTrainers);
+router.get(
+  "/searchTrainerByName",
+  verifyAuth,
+  userController.searchTrainerByName
+);
 
 export default router;

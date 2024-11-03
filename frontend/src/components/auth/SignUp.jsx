@@ -13,7 +13,7 @@ const SignUp = () => {
     email: "",
     password: "",
     mobile: "",
-    userType: "user",
+    role: "user",
     preferences: "",
     goals: "",
   });
@@ -145,15 +145,15 @@ const SignUp = () => {
                   </div>
                   <div>
                     <label
-                      htmlFor='userType'
+                      htmlFor='role'
                       className='block mb-2 text-sm font-medium text-gray-900'
                     >
                       User Type
                     </label>
                     <select
-                      name='userType'
-                      id='userType'
-                      value={formData.userType}
+                      name='role'
+                      id='role'
+                      value={formData.role}
                       onChange={handleChange}
                       className='bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5'
                       required

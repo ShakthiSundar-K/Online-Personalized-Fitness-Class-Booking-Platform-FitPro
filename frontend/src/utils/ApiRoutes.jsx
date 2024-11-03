@@ -39,6 +39,22 @@ const ApiRoutes = {
     path: "/users/viewBookedClasses",
     authenticate: true,
   },
+  VIEW_ALL_TRAINERS: {
+    path: "/users/viewAllTrainers",
+    authenticate: true,
+  },
+  VIEW_FILTERED_TRAINERS: {
+    path: "/users/filterTrainers",
+    authenticate: true,
+  },
+  SEARCH_TRAINERS: {
+    path: "/users/searchTrainerByName",
+    authenticate: true,
+  },
+  VIEW_TRAINER_BY_ID: {
+    path: "/users/viewTrainerById/:userId",
+    authenticate: true,
+  },
 };
 
 export default ApiRoutes;

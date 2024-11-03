@@ -365,7 +365,15 @@ const submitFeedback = async (req, res) => {
 
 const viewAllTrainers = async (req, res) => {
   try {
-    const trainers = await Trainer.find({});
+    // Populate the 'userId' field from the 'User' model's 'id' field
+    const trainers = await Trainer.find({}).populate({
+      path: "userId", // Path to populate
+      model: "users", // Model to use for population
+      select: "name", // Only select the 'name' field
+      localField: "userId", // Field in Trainer model
+      foreignField: "id", // Field in User model
+    });
+
     res.json(trainers);
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -374,14 +382,147 @@ const viewAllTrainers = async (req, res) => {
 
 const viewTrainerById = async (req, res) => {
   try {
-    const trainer = await Trainer.findOne({ userId: req.params.userId });
+    // Step 1: Find the trainer using userId and populate user details
+    const trainer = await Trainer.findOne({
+      userId: req.params.userId,
+    }).populate({
+      path: "userId", // Populate `userId` field from the User model
+      model: "users", // Ensure "users" matches the actual model name
+      select: "name id email", // Select the fields you want from the User model
+      localField: "userId", // Local field in Trainer model
+      foreignField: "id", // Corresponding field in User model
+    });
+
     // Check if trainer exists
     if (!trainer) {
       return res.status(404).json({ message: "Trainer not found" });
     }
-    res.status(200).json(trainer);
+
+    // Step 2: Use trainerId to find all associated classes
+    const classes = await Class.find({ trainerId: req.params.userId }).select(
+      "classType className duration timeSlot  price bookedCount classId"
+    );
+
+    // Step 3: Combine trainer and classes data into a single response
+    const response = {
+      trainer: {
+        trainerName: trainer.trainerName,
+        specializations: trainer.specializations,
+        bio: trainer.bio,
+        experience: trainer.experience,
+        certifications: trainer.certifications,
+        rating: trainer.rating,
+        availability: trainer.availability,
+        profilePic: trainer.profilePictureUrl,
+        userDetails: trainer.userId, // This will include name, id, email from User
+      },
+      classes, // Array of classes associated with the trainer
+    };
+
+    res.status(200).json(response);
   } catch (error) {
+    console.error("Error fetching trainer and classes:", error);
     res.status(400).json({ message: error.message });
+  }
+};
+
+const searchTrainerByName = async (req, res) => {
+  const { name } = req.query;
+
+  if (!name) {
+    return res.status(400).json({ message: "Search term is required." });
+  }
+
+  try {
+    // Step 1: Find the user with the provided name and trainer role
+    const user = await User.findOne({
+      name: new RegExp(name, "i"),
+      role: "trainer",
+    });
+
+    if (!user) {
+      // Return an empty array if no user is found
+      return res.json([]);
+    }
+
+    // Step 2: Use the user's id to find the trainer details with populated user information
+    const trainer = await Trainer.findOne({ userId: user.id }).populate({
+      path: "userId", // Field in Trainer model to populate
+      model: "users", // Name of the model to use for population (User model)
+      select: "name id", // Only select the fields 'name' and 'id' from the User model
+      localField: "userId", // Local field in Trainer model
+      foreignField: "id", // Field in User model that corresponds to `userId` in Trainer
+    });
+
+    if (!trainer) {
+      // Return an empty array if no trainer details are found
+      return res.json([]);
+    }
+
+    // Send the trainer details as an array
+    res.json([trainer]);
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ message: "Error occurred while searching for trainer." });
+  }
+};
+
+const filterTrainers = async (req, res) => {
+  try {
+    const {
+      minRating,
+      maxRating,
+      minExperience,
+      maxExperience,
+      specializations,
+    } = req.query;
+    const filterCriteria = {};
+
+    // Filter by rating range
+    if (minRating || maxRating) {
+      filterCriteria["rating.averageRating"] = {};
+      if (minRating)
+        filterCriteria["rating.averageRating"].$gte = Number(minRating);
+      if (maxRating)
+        filterCriteria["rating.averageRating"].$lte = Number(maxRating);
+    }
+
+    // Filter by experience range
+    if (minExperience || maxExperience) {
+      filterCriteria.experience = {};
+      if (minExperience) filterCriteria.experience.$gte = Number(minExperience);
+      if (maxExperience) filterCriteria.experience.$lte = Number(maxExperience);
+    }
+
+    // Filter by specializations (array contains any of the specified values)
+    if (specializations) {
+      const specializationArray = specializations
+        .split(",")
+        .map((spec) => new RegExp(spec.trim(), "i"));
+      filterCriteria.specializations = { $in: specializationArray };
+    }
+
+    // Find trainers with filter criteria and populate the `userId` field to get `name` and `id`
+    const trainers = await Trainer.find(filterCriteria).populate({
+      path: "userId", // Field in Trainer model
+      model: "users", // User model name as registered in Mongoose
+      select: "name id", // Select only `name` and `id` fields from User model
+      localField: "userId", // Local field in Trainer model
+      foreignField: "id", // Corresponding field in User model
+    });
+
+    if (trainers.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "No trainers found matching the filter criteria." });
+    }
+
+    res.status(200).json(trainers);
+  } catch (error) {
+    console.error(`Error in filterTrainers: ${error.message}`);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 };
 
@@ -397,4 +538,6 @@ export default {
   searchClassesByName,
   filterClasses,
   viewAllClasses,
+  filterTrainers,
+  searchTrainerByName,
 };
