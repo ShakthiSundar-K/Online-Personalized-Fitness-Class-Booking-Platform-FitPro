@@ -158,10 +158,18 @@ const viewBookedClasses = async (req, res) => {
       }
     }
 
-    // Separate upcoming and history classes
+    // Separate upcoming and history classes, excluding canceled classes from upcoming
     const now = new Date();
-    const upcoming = bookedClasses.filter((b) => new Date(b.classDate) > now);
-    const history = bookedClasses.filter((b) => new Date(b.classDate) <= now);
+    const upcoming = bookedClasses.filter(
+      (b) => new Date(b.classDate) > now && b.status !== "canceled"
+    );
+
+    const history = bookedClasses.filter(
+      (b) => new Date(b.classDate) <= now || b.status === "canceled"
+    );
+
+    // Gather booked class IDs to exclude from recommendations
+    const bookedClassIds = bookedClasses.map((b) => b.classId);
 
     // Fetch the user's preferences and goals
     const user = await User.findOne({ id: userId });
@@ -172,8 +180,9 @@ const viewBookedClasses = async (req, res) => {
     const preferredTypes = user.preferences || [];
     const goalTypes = user.goals || [];
 
-    // Find recommended classes based on both preferences and goals
+    // Find recommended classes based on preferences and goals, excluding booked classes
     const recommendedClasses = await Class.find({
+      classId: { $nin: bookedClassIds }, // Exclude already booked classes
       $or: [
         { classType: { $in: preferredTypes } },
         { classType: { $in: goalTypes } },
@@ -190,7 +199,12 @@ const viewBookedClasses = async (req, res) => {
 
 const cancelBooking = async (req, res) => {
   try {
-    const booking = await Booking.findOne({ _id: req.params.bookingId });
+    // Get classId from params and userId from req.user
+    const { classId } = req.params;
+    const userId = req.user.id;
+
+    // Find the booking based on classId and userId
+    const booking = await Booking.findOne({ classId, userId });
 
     if (!booking) {
       return res.status(404).json({ message: "Booking not found" });
@@ -204,7 +218,7 @@ const cancelBooking = async (req, res) => {
     }
 
     // Retrieve class details using classId from the booking
-    const selectedClass = await Class.findOne({ classId: booking.classId });
+    const selectedClass = await Class.findOne({ classId });
 
     // Ensure the class exists to avoid undefined errors
     if (!selectedClass) {
@@ -220,29 +234,23 @@ const cancelBooking = async (req, res) => {
     await Payment.create({
       userId: booking.userId,
       bookingId: booking._id,
-      amount: selectedClass.price, // Fetch price from selected class
+      amount: selectedClass.price,
       paymentStatus: "success",
       transactionId: `refund-${booking._id}`,
     });
 
     // Remove the user from the attendees array in the class model
-    await Class.updateOne(
-      { classId: booking.classId },
-      { $pull: { attendees: booking.userId } } // Use $pull to remove the user
-    );
+    await Class.updateOne({ classId }, { $pull: { attendees: userId } });
 
     // Pull classId from the user's bookings array
-    await User.updateOne(
-      { id: booking.userId },
-      { $pull: { bookings: booking.classId } }
-    );
+    await User.updateOne({ id: userId }, { $pull: { bookings: classId } });
 
     // Send email notification about cancellation
-    const userEmail = req.user.email; // Retrieve email from user object
+    const userEmail = req.user.email;
     await sendEmail(
       userEmail,
       "Class Cancellation",
-      `You have successfully cancelled your booking for class: ${selectedClass.className}. Your refund will be processed shortly.`
+      `You have successfully canceled your booking for class: ${selectedClass.className}. Your refund will be processed shortly.`
     );
 
     res.json({ message: "Booking canceled and refund processed" });

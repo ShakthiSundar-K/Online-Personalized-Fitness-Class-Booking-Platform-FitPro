@@ -3,7 +3,12 @@ import api from "../../service/ApiService";
 import ApiRoutes from "../../utils/ApiRoutes";
 import toast from "react-hot-toast";
 
-const ClassCard = ({ classData, isBookable = false, isButton = true }) => {
+const ClassCard = ({
+  classData,
+  isBookable = false,
+  isButton = true,
+  onCancel,
+}) => {
   const {
     classId,
     className,
@@ -46,10 +51,27 @@ const ClassCard = ({ classData, isBookable = false, isButton = true }) => {
   const cancelBooking = async (classId) => {
     try {
       const { path, authenticate } = ApiRoutes.CANCEL_BOOKING;
-      await api.post(path.replace(":classId", classId), { authenticate });
-      setMyClasses(myClasses.filter((classData) => classData._id !== classId));
-    } catch (err) {
-      console.error("Failed to cancel booking:", err);
+      console.log(classData.classId);
+      // Perform the cancel booking API request with correct config
+      const response = await api.post(
+        path.replace(":classId", classData.classId), // Replace :classId with the actual classId
+        {}, // Empty object for the request body, as we don’t have any data to send here
+        { authenticate } // Authentication config should be in the third parameter
+      );
+
+      if (response) {
+        toast.success("Booking canceled successfully");
+
+        // Optionally, update the local state to remove the canceled booking
+        setMyClasses((prevClasses) =>
+          prevClasses.filter((classData) => classData.classId !== classId)
+        );
+      } else {
+        console.error("Cancel booking failed with response:", response);
+      }
+    } catch (error) {
+      console.error("Error in cancel booking:", error);
+      toast.error("Error in canceling booking. Please try again.");
     }
   };
 
@@ -87,7 +109,7 @@ const ClassCard = ({ classData, isBookable = false, isButton = true }) => {
             </button>
           ) : (
             <button
-              onClick={() => cancelBooking(classData.classId)}
+              onClick={cancelBooking}
               className='px-3 py-1 text-xs font-semibold text-white bg-gradient-to-r from-orange-500 to-orange-600 rounded-md shadow-lg hover:from-orange-400 hover:to-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-300 transition-all duration-200'
             >
               Cancel

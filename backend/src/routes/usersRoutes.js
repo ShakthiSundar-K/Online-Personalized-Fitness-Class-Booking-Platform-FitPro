@@ -20,7 +20,7 @@ router.delete(
 router.post("/bookClass/:classId", verifyAuth, userController.bookClass);
 router.get("/viewBookedClasses", verifyAuth, userController.viewBookedClasses);
 router.post(
-  "/cancelBooking/:bookingId",
+  "/cancelBooking/:classId",
   verifyAuth,
   userController.cancelBooking
 );
