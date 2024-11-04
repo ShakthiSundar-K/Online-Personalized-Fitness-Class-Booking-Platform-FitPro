@@ -3,9 +3,9 @@ import trainerController from "../controller/trainerController.js";
 import verifyAuth from "../middleware/verifyAuth.js";
 const router = express.Router();
 
-router.post(
+router.put(
   "/createTrainerProfile",
-  verifyAuth,
+
   trainerController.createTrainerProfile
 );
 router.post("/createClass", verifyAuth, trainerController.createClass);

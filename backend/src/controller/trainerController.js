@@ -5,12 +5,11 @@ import User from "../model/user.js";
 import Review from "../model/review.js";
 import { sendEmail } from "../service/emailService.js";
 // Create or Update Trainer Profile
+
 const createTrainerProfile = async (req, res) => {
   try {
-    // Extracting userId from `req.user` populated by verifyAuth middleware
-    const userId = req.user.id;
-
     const {
+      userId,
       specializations,
       bio,
       experience,
@@ -18,9 +17,13 @@ const createTrainerProfile = async (req, res) => {
       profilePictureUrl,
     } = req.body;
 
-    // Use upsert to either update or create the trainer profile in one go
+    if (!userId) {
+      return res.status(400).send({ message: "User ID is required" });
+    }
+
+    // Use findOneAndUpdate with upsert to create or update the trainer profile
     const trainer = await Trainer.findOneAndUpdate(
-      { userId },
+      { userId }, // Find trainer by userId
       {
         $set: {
           specializations,
@@ -36,6 +39,7 @@ const createTrainerProfile = async (req, res) => {
     const message = trainer
       ? "Trainer profile updated successfully"
       : "Trainer profile created successfully";
+
     res.status(200).json({ message, trainer });
   } catch (error) {
     console.log(`Error in ${req.originalUrl}`, error.message);

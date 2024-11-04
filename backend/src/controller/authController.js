@@ -8,20 +8,29 @@ const createUser = async (req, res) => {
   try {
     let user = await usersModel.findOne({ email: req.body.email });
     if (!user) {
-      //hash the password
+      // Hash the password
       req.body.password = await auth.hashData(req.body.password);
-      await usersModel.create(req.body);
+
+      // Create the user and store the result in a variable to access the ID
+      const newUser = await usersModel.create(req.body);
+
       // Send welcome email
       await sendEmail(
         req.body.email,
         "Welcome to FitPro",
         "Thank you for creating an account with us. We're excited to have you on board!"
       );
-      res.status(201).send({ message: "User Created Successfully" });
-    } else
+
+      // Respond with success message and new user's ID
+      res.status(201).send({
+        message: "User Created Successfully",
+        userId: newUser.id, // Include userId in the response
+      });
+    } else {
       res
         .status(400)
         .send({ message: `User with ${req.body.email} already exists!` });
+    }
   } catch (error) {
     console.log(`Error in ${req.originalUrl}`, error.message);
     res.status(500).send({ message: error.message || "Internal Server Error" });
