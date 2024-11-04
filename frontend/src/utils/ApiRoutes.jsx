@@ -71,6 +71,10 @@ const ApiRoutes = {
     path: "/trainers/createTrainerProfile",
     authenticate: false,
   },
+  CREATE_CLASS: {
+    path: "/trainers/createClass",
+    authenticate: true,
+  },
 };
 
 export default ApiRoutes;

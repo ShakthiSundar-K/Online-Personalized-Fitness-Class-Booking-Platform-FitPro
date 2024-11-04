@@ -11,7 +11,7 @@ function Classes() {
       <NavBar />
       <ClassHero />
       <ClassNavBar />
-      <ContactInfo />
+
       <Footer />
     </div>
   );

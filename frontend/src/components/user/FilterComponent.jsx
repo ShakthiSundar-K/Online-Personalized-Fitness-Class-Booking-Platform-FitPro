@@ -128,7 +128,7 @@ function FilterComponent() {
       )}
 
       <h2 className='text-2xl font-bold mt-4'>Classes</h2>
-      <div className='class-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-4 mx-8 md:mx-0'>
+      <div className='class-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mt-4 mx-8 md:mx-0'>
         {classes.length > 0 ? (
           classes.map((classData) => (
             <ClassCard key={classData._id} classData={classData} isBookable />
