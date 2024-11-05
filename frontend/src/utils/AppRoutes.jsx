@@ -18,6 +18,7 @@ import ClassManagement from "../routes/admin/ClassManagement";
 import PaymentSuccess from "../routes/common/PaymentSuccess";
 import TrainerInfo from "../components/trainer/TrainerInfo";
 import Profile from "../routes/user/Profile";
+import CreateClass from "../components/trainer/CreateClass";
 
 const AppRoutes = [
   {
@@ -106,6 +107,16 @@ const AppRoutes = [
       <ProtectedRoute>
         <TrainerGuard>
           <Class />
+        </TrainerGuard>
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/trainer/createclass",
+    element: (
+      <ProtectedRoute>
+        <TrainerGuard>
+          <CreateClass />
         </TrainerGuard>
       </ProtectedRoute>
     ),
