@@ -7,6 +7,31 @@ function RecommendationsComponent() {
   const [myClasses, setMyClasses] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const handlePaymentAndBooking = async () => {
+    try {
+      const path = ApiRoutes.CREATE_PAYPAL_PAYMENT.path.replace(
+        ":classId",
+        classId
+      );
+      const authenticate = ApiRoutes.CREATE_PAYPAL_PAYMENT.authenticate;
+
+      const response = await api.post(
+        path,
+        { amount: price },
+        { authenticate }
+      );
+
+      if (response && response.approvalUrl) {
+        window.location.href = response.approvalUrl;
+      } else {
+        toast.error("Failed to initiate payment. Please try again.");
+      }
+    } catch (error) {
+      console.error("Payment initiation error:", error);
+      toast.error("Error in initiating payment.");
+    }
+  };
+
   useEffect(() => {
     const fetchMyClasses = async () => {
       try {

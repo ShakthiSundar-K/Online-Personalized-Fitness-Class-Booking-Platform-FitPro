@@ -79,6 +79,14 @@ const ApiRoutes = {
     path: "/trainers/viewPostedClasses",
     authenticate: true,
   },
+  SUBMIT_FEEDBACK: {
+    path: "/users/submitFeedback/:classId",
+    authenticate: true,
+  },
+  GET_REVIEWS: {
+    path: "/trainers/viewReviewsByClassId/:classId",
+    authenticate: true,
+  },
 };
 
 export default ApiRoutes;

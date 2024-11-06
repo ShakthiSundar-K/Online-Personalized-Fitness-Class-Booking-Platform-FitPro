@@ -19,6 +19,7 @@ import PaymentSuccess from "../routes/common/PaymentSuccess";
 import TrainerInfo from "../components/trainer/TrainerInfo";
 import Profile from "../routes/user/Profile";
 import CreateClass from "../components/trainer/CreateClass";
+import Reviews from "../components/trainer/Reviews";
 
 const AppRoutes = [
   {
@@ -117,6 +118,26 @@ const AppRoutes = [
       <ProtectedRoute>
         <TrainerGuard>
           <CreateClass />
+        </TrainerGuard>
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/trainer/editclass/:classId",
+    element: (
+      <ProtectedRoute>
+        <TrainerGuard>
+          <CreateClass />
+        </TrainerGuard>
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/trainer/classreviews/:classId",
+    element: (
+      <ProtectedRoute>
+        <TrainerGuard>
+          <Reviews />
         </TrainerGuard>
       </ProtectedRoute>
     ),

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import api from "../../service/ApiService";
 import ApiRoutes from "../../utils/ApiRoutes";
-import TrainerCard from "./TrainerCard";
+import TrainerClassCard from "./TrainerClassCard";
 
 const PostedClasses = () => {
   const [classes, setClasses] = useState([]);
@@ -26,7 +26,7 @@ const PostedClasses = () => {
     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 p-6 md:p-16 mx-20'>
       {classes.length > 0 ? (
         classes.map((classData) => (
-          <TrainerCard key={classData.classId} classData={classData} />
+          <TrainerClassCard key={classData.classId} classData={classData} />
         ))
       ) : (
         <p className='text-center text-white'>No classes posted yet.</p>

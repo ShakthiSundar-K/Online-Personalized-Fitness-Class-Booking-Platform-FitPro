@@ -12,7 +12,6 @@ function HistoryComponent() {
       try {
         const { path, authenticate } = ApiRoutes.VIEW_MY_CLASSES;
         const response = await api.get(path, { authenticate });
-        console.log(response); // Check if this outputs the array of classes as expected
         setMyClasses(Array.isArray(response.history) ? response.history : []);
       } catch (err) {
         console.error(err);
@@ -38,6 +37,7 @@ function HistoryComponent() {
               classData={classData}
               isMyClass={true}
               isButton={false}
+              isFeedbackEnabled={true} // Pass prop to enable feedback button
             />
           ))
         ) : (

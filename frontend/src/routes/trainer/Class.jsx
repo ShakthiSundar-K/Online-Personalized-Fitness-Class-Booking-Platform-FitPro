@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import CreateClass from "../../components/trainer/CreateClass";
 import NavBar from "../../components/common/NavBar";
 import PostedClasses from "../../components/trainer/PostedClasses";
 
@@ -23,7 +22,7 @@ function Class() {
           className='bg-orange-500 text-white text-2xl p-3 border-2 border-orange-500 hover:scale-105'
           onClick={handleCreateClick}
         >
-          CREATE
+          CREATE GROUP CLASS
         </button>
       </div>
       <PostedClasses />

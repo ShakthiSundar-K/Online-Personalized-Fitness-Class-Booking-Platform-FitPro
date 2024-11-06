@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import api from "../../service/ApiService";
 import ApiRoutes from "../../utils/ApiRoutes";
 import toast from "react-hot-toast";
@@ -7,13 +7,13 @@ const ClassCard = ({
   classData,
   isBookable = false,
   isButton = true,
-  onCancel,
+  isFeedbackEnabled = false,
 }) => {
   const {
     classId,
     className,
     classType,
-    timeSlot = {}, // default to an empty object if undefined
+    timeSlot = {},
     price,
     bookedCount,
     classLink,
@@ -23,6 +23,11 @@ const ClassCard = ({
   const placeholderImage =
     "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png";
 
+  const [feedbackPopup, setFeedbackPopup] = useState(false);
+  const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
+  const [rating, setRating] = useState(0);
+  const [reviewText, setReviewText] = useState("");
+
   const handlePaymentAndBooking = async () => {
     try {
       const path = ApiRoutes.CREATE_PAYPAL_PAYMENT.path.replace(
@@ -30,7 +35,6 @@ const ClassCard = ({
         classId
       );
       const authenticate = ApiRoutes.CREATE_PAYPAL_PAYMENT.authenticate;
-
       const response = await api.post(
         path,
         { amount: price },
@@ -48,30 +52,45 @@ const ClassCard = ({
     }
   };
 
-  const cancelBooking = async (classId) => {
+  const cancelBooking = async () => {
     try {
       const { path, authenticate } = ApiRoutes.CANCEL_BOOKING;
-      console.log(classData.classId);
-      // Perform the cancel booking API request with correct config
       const response = await api.post(
-        path.replace(":classId", classData.classId), // Replace :classId with the actual classId
-        {}, // Empty object for the request body, as we don’t have any data to send here
-        { authenticate } // Authentication config should be in the third parameter
+        path.replace(":classId", classId),
+        {},
+        { authenticate }
       );
 
       if (response) {
         toast.success("Booking canceled successfully");
-
-        // Optionally, update the local state to remove the canceled booking
-        setMyClasses((prevClasses) =>
-          prevClasses.filter((classData) => classData.classId !== classId)
-        );
       } else {
         console.error("Cancel booking failed with response:", response);
       }
     } catch (error) {
       console.error("Error in cancel booking:", error);
       toast.error("Error in canceling booking. Please try again.");
+    }
+  };
+
+  const handleFeedbackSubmit = async () => {
+    try {
+      const { path, authenticate } = ApiRoutes.SUBMIT_FEEDBACK;
+      const response = await api.post(
+        path.replace(":classId", classId),
+        { rating, reviewText },
+        { authenticate }
+      );
+
+      if (response) {
+        toast.success("Feedback submitted successfully");
+        setFeedbackSubmitted(true);
+        setFeedbackPopup(false);
+      } else {
+        console.error("Feedback submission failed with response:", response);
+      }
+    } catch (error) {
+      console.error("Error submitting feedback:", error);
+      toast.error("Error submitting feedback. Please try again.");
     }
   };
 
@@ -115,7 +134,58 @@ const ClassCard = ({
               Cancel
             </button>
           ))}
+        {isFeedbackEnabled && (
+          <button
+            onClick={() => setFeedbackPopup(true)}
+            disabled={feedbackSubmitted}
+            className={`px-3 py-1 text-xs font-semibold rounded-md shadow-lg focus:outline-none focus:ring-2 transition-all duration-200 ${
+              feedbackSubmitted
+                ? "bg-gray-500 text-gray-300 cursor-not-allowed"
+                : "bg-gradient-to-r from-green-500 to-green-600 text-white hover:from-green-400 hover:to-green-500 focus:ring-green-300"
+            }`}
+          >
+            {feedbackSubmitted ? "Feedback Submitted" : "Give Feedback"}
+          </button>
+        )}
       </div>
+
+      {feedbackPopup && (
+        <div className='feedback-popup fixed inset-0 flex items-center justify-center bg-black bg-opacity-50'>
+          <div className='bg-white p-4 rounded-lg shadow-lg w-80'>
+            <h3 className='text-lg font-semibold mb-2'>Submit Feedback</h3>
+            <label className='block text-sm mb-2'>Rating (1-5)</label>
+            <input
+              type='number'
+              value={rating}
+              min='1'
+              max='5'
+              onChange={(e) => setRating(e.target.value)}
+              className='w-full p-2 border rounded mb-3'
+            />
+            <label className='block text-sm mb-2'>Review</label>
+            <textarea
+              value={reviewText}
+              onChange={(e) => setReviewText(e.target.value)}
+              className='w-full p-2 border rounded mb-3'
+              rows='3'
+            />
+            <div className='flex justify-end space-x-2'>
+              <button
+                onClick={() => setFeedbackPopup(false)}
+                className='px-3 py-1 text-sm font-semibold text-gray-500 rounded hover:bg-gray-200'
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleFeedbackSubmit}
+                className='px-3 py-1 text-sm font-semibold text-white bg-blue-500 rounded hover:bg-blue-600'
+              >
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
