@@ -87,6 +87,14 @@ const ApiRoutes = {
     path: "/trainers/viewReviewsByClassId/:classId",
     authenticate: true,
   },
+  GET_CLASS_DETAILS: {
+    path: "/trainers/viewClassById/:classId",
+    authenticate: true,
+  },
+  UPDATE_CLASS: {
+    path: "/trainers/editClass/:classId",
+    authenticate: true,
+  },
 };
 
 export default ApiRoutes;

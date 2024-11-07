@@ -299,6 +299,20 @@ const viewReviewsByClassId = async (req, res) => {
   }
 };
 
+const viewClassById = async (req, res) => {
+  try {
+    const { classId } = req.params;
+    const classInfo = await Class.find({ classId });
+    if (!classInfo.length) {
+      return res.status(404).json({ messge: "Class Not Found" });
+    }
+    res.json(classInfo);
+  } catch {
+    console.log(`Error in ${req.originalUrl}`, error.message);
+    res.status(500).send({ message: error.message || "internal Server Error" });
+  }
+};
+
 export default {
   createTrainerProfile,
   createClass,
@@ -309,4 +323,5 @@ export default {
   filterClasses,
   searchClassesByName,
   viewReviewsByClassId,
+  viewClassById,
 };

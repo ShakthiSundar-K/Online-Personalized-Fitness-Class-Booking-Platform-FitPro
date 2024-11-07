@@ -9,7 +9,7 @@ import ContactInfo from "../../components/common/ContactInfo";
 
 function Home() {
   return (
-    <div className='relative bg-[#151515]'>
+    <div className='relative bg-black'>
       <NavBar />
       <Hero />
       <FeaturesSection />

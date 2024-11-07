@@ -20,6 +20,7 @@ import TrainerInfo from "../components/trainer/TrainerInfo";
 import Profile from "../routes/user/Profile";
 import CreateClass from "../components/trainer/CreateClass";
 import Reviews from "../components/trainer/Reviews";
+import EditClass from "../components/trainer/EditClass";
 
 const AppRoutes = [
   {
@@ -127,7 +128,7 @@ const AppRoutes = [
     element: (
       <ProtectedRoute>
         <TrainerGuard>
-          <CreateClass />
+          <EditClass />
         </TrainerGuard>
       </ProtectedRoute>
     ),

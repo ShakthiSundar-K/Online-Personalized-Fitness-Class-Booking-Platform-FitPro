@@ -118,7 +118,7 @@ const CreateClass = () => {
         <div className='flex flex-col'>
           <label className='font-semibold text-gray-700'>Day</label>
           <input
-            type='text'
+            type='date'
             name='day'
             value={formData.timeSlot.day}
             onChange={handleInputChange}
@@ -129,7 +129,7 @@ const CreateClass = () => {
         <div className='flex flex-col'>
           <label className='font-semibold text-gray-700'>Start Time</label>
           <input
-            type='text'
+            type='time'
             name='startTime'
             value={formData.timeSlot.startTime}
             onChange={handleInputChange}
@@ -141,7 +141,7 @@ const CreateClass = () => {
         <div className='flex flex-col'>
           <label className='font-semibold text-gray-700'>End Time</label>
           <input
-            type='text'
+            type='time'
             name='endTime'
             value={formData.timeSlot.endTime}
             onChange={handleInputChange}

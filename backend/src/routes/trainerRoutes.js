@@ -21,6 +21,11 @@ router.get(
   verifyAuth,
   trainerController.viewPostedClasses
 );
+router.get(
+  "/viewClassById/:classId",
+  verifyAuth,
+  trainerController.viewClassById
+);
 router.get("/filterClasses", verifyAuth, trainerController.filterClasses);
 router.get(
   "/viewReviewsByClassId/:classId",
