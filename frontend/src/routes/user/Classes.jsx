@@ -9,10 +9,13 @@ function Classes() {
   return (
     <div className='relative bg-black'>
       <NavBar />
-      <ClassHero />
+      <div className='text-center text-4xl pt-40 pb-10 text-white'>
+        BOOK YOUR <span className='text-orange-500'>FITNESS CLASSES</span>
+      </div>
       <ClassNavBar />
-
-      <Footer />
+      <div className='pt-32'>
+        <Footer />
+      </div>
     </div>
   );
 }

@@ -3,11 +3,12 @@ import ClassCard from "./ClassCard";
 import api from "../../service/ApiService";
 import ApiRoutes from "../../utils/ApiRoutes";
 import { FiFilter, FiSearch } from "react-icons/fi";
+import { ImSpinner2 } from "react-icons/im"; // Example spinner icon
 
 function FilterComponent() {
   const [searchTerm, setSearchTerm] = useState("");
   const [classes, setClasses] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false); // Set to false initially
   const [error, setError] = useState(null);
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
@@ -17,14 +18,15 @@ function FilterComponent() {
 
   useEffect(() => {
     const fetchClasses = async () => {
+      setLoading(true);
       try {
         const { path, authenticate } = ApiRoutes.VIEW_ALL_CLASSES;
         const response = await api.get(path, { authenticate });
         setClasses(Array.isArray(response) ? response : []);
-        setLoading(false);
       } catch (err) {
         console.error(err);
         setError("Failed to fetch classes");
+      } finally {
         setLoading(false);
       }
     };
@@ -32,6 +34,7 @@ function FilterComponent() {
   }, []);
 
   const fetchFilteredClasses = async () => {
+    setLoading(true);
     try {
       const params = {
         date: selectedDate,
@@ -39,19 +42,21 @@ function FilterComponent() {
         minPrice,
         maxPrice,
       };
-      console.log(params);
       const { path, authenticate } = ApiRoutes.VIEW_FILTERED_CLASSES;
       const response = await api.get(path, { params, authenticate });
 
       setClasses(Array.isArray(response) ? response : []);
-      setShowFilters(false); // Close filters after applying
+      setShowFilters(false);
     } catch (err) {
       console.error(err);
       setError("Failed to fetch filtered classes");
+    } finally {
+      setLoading(false);
     }
   };
 
   const searchClasses = async () => {
+    setLoading(true);
     try {
       const { path, authenticate } = ApiRoutes.VIEW_SEARCHED_CLASSES;
       const params = { term: searchTerm };
@@ -60,6 +65,8 @@ function FilterComponent() {
     } catch (err) {
       console.error(err);
       setError("Failed to search classes");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -83,13 +90,19 @@ function FilterComponent() {
         <button
           onClick={searchClasses}
           className='flex items-center px-4 py-2 bg-orange-500 text-white rounded-md '
+          disabled={loading}
         >
-          <FiSearch className='mr-2' size={18} /> Search
+          {loading ? (
+            <ImSpinner2 className='animate-spin mr-2' size={18} />
+          ) : (
+            <FiSearch className='mr-2' size={18} />
+          )}
+          Search
         </button>
       </div>
 
       {showFilters && (
-        <div className='filters absolute top-0 right-0 mt-12 w-60 p-4 bg-white border rounded-md shadow-lg z-10 transform transition-transform duration-200 ease-in-out sm:mt-10  sm:left-48 sm:w-64'>
+        <div className='filters absolute top-0 right-0 mt-12 w-60 p-4 bg-white border rounded-md shadow-lg z-10 transform transition-transform duration-200 ease-in-out sm:mt-10 sm:left-48 sm:w-64'>
           <div className='grid grid-cols-1 gap-3'>
             <input
               type='date'
@@ -121,22 +134,34 @@ function FilterComponent() {
           <button
             onClick={fetchFilteredClasses}
             className='w-full mt-4 px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600'
+            disabled={loading}
           >
-            Apply Filters
+            {loading ? (
+              <ImSpinner2 className='animate-spin mr-2' size={18} />
+            ) : (
+              "Apply Filters"
+            )}
           </button>
         </div>
       )}
 
       <h2 className='text-2xl font-bold mt-4'>Classes</h2>
-      <div className='class-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mt-4 mx-8 md:mx-0'>
-        {classes.length > 0 ? (
-          classes.map((classData) => (
-            <ClassCard key={classData._id} classData={classData} isBookable />
-          ))
-        ) : (
-          <p>No classes found.</p>
-        )}
-      </div>
+
+      {loading ? (
+        <div className='flex justify-center items-center mt-8'>
+          <div className='w-10 h-10 border-4 border-t-transparent border-white rounded-full animate-spin'></div>
+        </div>
+      ) : (
+        <div className='class-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mt-4 mx-8 md:mx-0'>
+          {classes.length > 0 ? (
+            classes.map((classData) => (
+              <ClassCard key={classData._id} classData={classData} isBookable />
+            ))
+          ) : (
+            <p>No classes found.</p>
+          )}
+        </div>
+      )}
     </div>
   );
 }

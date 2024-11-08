@@ -22,10 +22,10 @@ function TrainerFilterComponent() {
         const { path, authenticate } = ApiRoutes.VIEW_ALL_TRAINERS;
         const response = await api.get(path, { authenticate });
         setTrainers(Array.isArray(response) ? response : []);
-        setLoading(false);
       } catch (err) {
         console.error("Failed to fetch trainers:", err);
         setError("Failed to fetch trainers");
+      } finally {
         setLoading(false);
       }
     };
@@ -35,6 +35,7 @@ function TrainerFilterComponent() {
 
   const fetchFilteredTrainers = async () => {
     try {
+      setLoading(true);
       const params = {
         minRating,
         maxRating,
@@ -50,11 +51,14 @@ function TrainerFilterComponent() {
     } catch (err) {
       console.error("Failed to fetch filtered trainers:", err);
       setError("Failed to fetch filtered trainers");
+    } finally {
+      setLoading(false);
     }
   };
 
   const searchTrainers = async () => {
     try {
+      setLoading(true);
       const { path, authenticate } = ApiRoutes.SEARCH_TRAINERS;
       const params = { name: searchTerm };
       const response = await api.get(path, { params, authenticate });
@@ -62,11 +66,13 @@ function TrainerFilterComponent() {
     } catch (err) {
       console.error("Failed to search trainers:", err);
       setError("Failed to search trainers");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className='filter-component p-4 md:px-32 md:py-10 bg-black relative'>
+    <div className='filter-component p-4 md:px-32 md:py-32 bg-black relative'>
       <h1 className='text-4xl font-bold text-center mb-10 mt-3 font-oswald'>
         <span className='text-white'>OUR</span>{" "}
         <span className='text-orange-500'>TRAINERS</span>
@@ -144,12 +150,16 @@ function TrainerFilterComponent() {
 
       <h2 className='text-2xl font-bold mt-4'>Trainers</h2>
       <div className='trainer-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-4 mx-8 md:mx-0'>
-        {trainers.length > 0 ? (
+        {loading ? (
+          <div className='flex justify-center items-center mt-8'>
+            <div className='w-10 h-10 border-4 border-t-transparent border-white rounded-full animate-spin'></div>
+          </div>
+        ) : trainers.length > 0 ? (
           trainers.map((trainerData) => (
             <TrainerCard key={trainerData._id} trainerData={trainerData} />
           ))
         ) : (
-          <p>No trainers found.</p>
+          <p className='text-white'>No trainers found.</p>
         )}
       </div>
     </div>

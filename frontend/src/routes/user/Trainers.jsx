@@ -9,10 +9,10 @@ function Trainers() {
   return (
     <div className='relative bg-black'>
       <NavBar />
-      <ClassHero />
       <TrainerFilterComponent />
-      <ContactInfo />
-      <Footer />
+      <div className='pt-10'>
+        <Footer />
+      </div>
     </div>
   );
 }

@@ -29,7 +29,9 @@ function HistoryComponent() {
       </h2>
       <div className='class-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6'>
         {loading ? (
-          <p className='text-white'>Loading...</p>
+          <div className='flex justify-center items-center mt-8'>
+            <div className='w-10 h-10 border-4 border-t-transparent border-white rounded-full animate-spin'></div>
+          </div>
         ) : myClasses.length > 0 ? (
           myClasses.map((classData) => (
             <ClassCard

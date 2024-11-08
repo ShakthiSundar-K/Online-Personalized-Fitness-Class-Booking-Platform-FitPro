@@ -30,7 +30,7 @@ const Reviews = () => {
       <h2 className='text-4xl font-bold text-orange-500 mb-10 mt-20 text-center'>
         CLASS REVIEWS
       </h2>
-      <div className='h-96 overflow-y-auto  scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-900 border-2 border-neutral-400  p-2 bg-black'>
+      <div className='h-96 overflow-y-auto  scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-900 border-2 border-neutral-400  p-2 bg-black mx-36'>
         {reviews.length > 0 ? (
           reviews.map((review, index) => (
             <div
