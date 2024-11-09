@@ -1,9 +1,8 @@
-// NavBar.js
 import React, { useState } from "react";
 import FilterComponent from "./FilterComponent";
 import MyClassesComponent from "./MyClassesComponent";
-import HistoryComponent from "./HistoryComponent"; // Component for history
-import RecommendationsComponent from "./RecommendationsComponent"; // Component for recommendations
+import HistoryComponent from "./HistoryComponent";
+import RecommendationsComponent from "./RecommendationsComponent";
 
 function ClassNavBar() {
   const [activeTab, setActiveTab] = useState("all");
@@ -11,37 +10,37 @@ function ClassNavBar() {
   return (
     <div className='bg-black'>
       {/* Navigation Section */}
-      <div className='flex justify-center pt-8 pb-2'>
+      <div className='flex flex-wrap justify-center pt-8 pb-2 px-2 space-x-2 overflow-x-auto'>
         <button
           onClick={() => setActiveTab("all")}
-          className={`px-4 py-2 mx-2 text-white ${
-            activeTab === "all" ? "bg-orange-500" : "hover:bg-orange-500"
+          className={`px-3 py-2 text-sm sm:text-base text-white ${
+            activeTab === "all" ? "bg-orange-600" : "hover:bg-orange-600"
           }`}
         >
           All Classes
         </button>
         <button
           onClick={() => setActiveTab("my")}
-          className={`px-4 py-2 mx-2 text-white ${
-            activeTab === "my" ? "bg-orange-500" : "hover:bg-orange-500"
+          className={`px-3 py-2 text-sm sm:text-base text-white ${
+            activeTab === "my" ? "bg-orange-600" : "hover:bg-orange-600"
           }`}
         >
           My Upcoming Classes
         </button>
         <button
           onClick={() => setActiveTab("history")}
-          className={`px-4 py-2 mx-2 text-white ${
-            activeTab === "history" ? "bg-orange-500" : "hover:bg-orange-500"
+          className={`px-3 py-2 text-sm sm:text-base text-white ${
+            activeTab === "history" ? "bg-orange-600" : "hover:bg-orange-600"
           }`}
         >
           My History
         </button>
         <button
           onClick={() => setActiveTab("recommendations")}
-          className={`px-4 py-2 mx-2 text-white ${
+          className={`px-3 py-2 text-sm sm:text-base text-white ${
             activeTab === "recommendations"
-              ? "bg-orange-500"
-              : "hover:bg-orange-500"
+              ? "bg-orange-600"
+              : "hover:bg-orange-600"
           }`}
         >
           Recommendations

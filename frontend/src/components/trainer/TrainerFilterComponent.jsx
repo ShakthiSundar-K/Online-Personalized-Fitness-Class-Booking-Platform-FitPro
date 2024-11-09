@@ -75,7 +75,7 @@ function TrainerFilterComponent() {
     <div className='filter-component p-4 md:px-32 md:py-32 bg-black relative'>
       <h1 className='text-4xl font-bold text-center mb-10 mt-3 font-oswald'>
         <span className='text-white'>OUR</span>{" "}
-        <span className='text-orange-500'>TRAINERS</span>
+        <span className='text-orange-600'>TRAINERS</span>
       </h1>
       <div className='flex items-center gap-4 mb-4'>
         <div className='relative flex-grow'>
@@ -89,12 +89,12 @@ function TrainerFilterComponent() {
             placeholder='Search for trainers by name...'
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className='w-full pl-10 pr-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500'
+            className='w-full pl-10 pr-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-600'
           />
         </div>
         <button
           onClick={searchTrainers}
-          className='flex items-center px-4 py-2 bg-orange-500 text-white rounded-md '
+          className='flex items-center px-4 py-2 bg-orange-600 text-white rounded-md '
         >
           <FiSearch className='mr-2' size={18} /> Search
         </button>
@@ -108,40 +108,40 @@ function TrainerFilterComponent() {
               placeholder='Min Rating'
               value={minRating}
               onChange={(e) => setMinRating(e.target.value)}
-              className='p-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 w-full'
+              className='p-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-600 w-full'
             />
             <input
               type='number'
               placeholder='Max Rating'
               value={maxRating}
               onChange={(e) => setMaxRating(e.target.value)}
-              className='p-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 w-full'
+              className='p-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-600 w-full'
             />
             <input
               type='number'
               placeholder='Min Experience'
               value={minExperience}
               onChange={(e) => setMinExperience(e.target.value)}
-              className='p-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 w-full'
+              className='p-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-600 w-full'
             />
             <input
               type='number'
               placeholder='Max Experience'
               value={maxExperience}
               onChange={(e) => setMaxExperience(e.target.value)}
-              className='p-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 w-full'
+              className='p-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-600 w-full'
             />
             <input
               type='text'
               placeholder='Specializations (comma-separated)'
               value={specializations}
               onChange={(e) => setSpecializations(e.target.value)}
-              className='p-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 w-full'
+              className='p-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-600 w-full'
             />
           </div>
           <button
             onClick={fetchFilteredTrainers}
-            className='w-full mt-4 px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600'
+            className='w-full mt-4 px-4 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-600'
           >
             Apply Filters
           </button>

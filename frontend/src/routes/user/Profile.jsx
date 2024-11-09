@@ -12,7 +12,7 @@ function Profile() {
     <div className='bg-black'>
       <NavBar />
       <div className='text-center text-4xl text-white pt-40 pb-20'>
-        USER <span className='text-orange-500'>PROFILE</span>
+        USER <span className='text-orange-600'>PROFILE</span>
       </div>
       <ProfileComponent />
       {/* Conditionally render TrainerProfile if the role is "trainer" */}

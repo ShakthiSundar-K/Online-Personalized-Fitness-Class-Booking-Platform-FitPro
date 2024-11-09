@@ -17,9 +17,9 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className='py-8  bg-black'>
+    <section className='py-4  bg-black'>
       <div className='container mx-auto font-sans'>
-        <h2 className='text-center mb-12 text-xl font-montserrat font-semibold font-oswald text-orange-500 '>
+        <h2 className='text-center mb-12 text-xl font-montserrat font-semibold font-oswald text-orange-600 '>
           Testimonial <br />
           <span className='text-4xl text-white'>OUR CLIENT SAY</span>
         </h2>
@@ -28,7 +28,7 @@ const Testimonials = () => {
             <div key={index} className='w-full md:w-1/3 mb-8 p-4 text-center'>
               <div className='bg-[#151515] shadow-lg rounded-lg p-6 transition-transform transform hover:scale-105'>
                 <p className='text-white italic'>{testimonial.text}</p>
-                <p className='mt-4 font-bold text-orange-500'>
+                <p className='mt-4 font-bold text-orange-600'>
                   - {testimonial.author}
                 </p>
               </div>

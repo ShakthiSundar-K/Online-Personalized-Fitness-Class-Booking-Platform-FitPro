@@ -27,7 +27,7 @@ function HistoryComponent() {
       <h2 className='text-2xl font-bold text-white mb-8'>
         My History of Booked Classes
       </h2>
-      <div className='class-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6'>
+      <div className='class-grid grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-4 mx-3 gap-6'>
         {loading ? (
           <div className='flex justify-center items-center mt-8'>
             <div className='w-10 h-10 border-4 border-t-transparent border-white rounded-full animate-spin'></div>

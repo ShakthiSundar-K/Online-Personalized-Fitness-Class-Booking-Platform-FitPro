@@ -16,7 +16,6 @@ const ClassCard = ({
     timeSlot = {},
     price,
     bookedCount,
-    classLink,
     classPic,
   } = classData;
 
@@ -95,41 +94,44 @@ const ClassCard = ({
   };
 
   return (
-    <div className='class-card border border-gray-800 rounded-lg shadow-lg bg-[#1c1c1e] transition-transform transform hover:scale-105 overflow-hidden'>
+    <div className='class-card border border-gray-300 shadow-md bg-gray-100 p-4 space-y-3'>
       <img
         src={classPic || placeholderImage}
         alt={className}
-        className='w-full h-28 object-cover rounded-t-lg opacity-90'
+        className='w-full h-52 object-contain ' // Increased height and adjusted object fit
       />
-      <div className='p-3 space-y-1'>
-        <h3 className='text-sm font-bold text-white truncate'>{className}</h3>
-        <p className='text-xs font-medium text-gray-400'>
-          Type: <span className='capitalize'>{classType}</span>
+
+      <div className='space-y-2'>
+        <h3 className='text-lg font-semibold text-gray-800 truncate'>
+          {className} - <span className='capitalize'>{classType}</span>
+        </h3>
+        <p className='text-sm text-gray-600 flex justify-between'>
+          <span>
+            <strong>Date:</strong> {timeSlot.day || "N/A"}
+          </span>
+          <span>
+            <strong>Time:</strong> {timeSlot.startTime || "N/A"} -{" "}
+            {timeSlot.endTime || "N/A"}
+          </span>
         </p>
-        <p className='text-xs text-gray-400'>Date: {timeSlot.day || "N/A"}</p>
-        <p className='text-xs text-gray-400'>
-          Time: {timeSlot.startTime || "N/A"} - {timeSlot.endTime || "N/A"}
-        </p>
-        <p className='text-xs font-semibold text-gray-300'>
-          Price: <span className='text-orange-400'>₹{price}</span>
+        <p className='text-sm text-gray-600'>
+          <strong>Booked Count:</strong> {bookedCount}
         </p>
       </div>
-      <div className='flex items-center justify-between px-3 py-2 bg-[#2c2c2e] rounded-b-lg'>
-        <span className='text-xs font-medium text-gray-400'>
-          Booked: {bookedCount}
-        </span>
+      <div className='flex items-center justify-between mt-4'>
+        <span className='text-lg font-semibold text-gray-800'>₹{price}</span>
         {isButton &&
           (isBookable ? (
             <button
               onClick={handlePaymentAndBooking}
-              className='px-3 py-1 text-xs font-semibold text-white bg-gradient-to-r from-orange-500 to-orange-600 rounded-md shadow-lg hover:from-orange-400 hover:to-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-300 transition-all duration-200'
+              className='px-4 py-2 text-white bg-orange-600 rounded-md shadow hover:bg-orange-700 focus:outline-none'
             >
               Book Now
             </button>
           ) : (
             <button
               onClick={cancelBooking}
-              className='px-3 py-1 text-xs font-semibold text-white bg-gradient-to-r from-orange-500 to-orange-600 rounded-md shadow-lg hover:from-orange-400 hover:to-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-300 transition-all duration-200'
+              className='px-4 py-2 text-white bg-red-500 rounded-md shadow hover:bg-red-600 focus:outline-none'
             >
               Cancel
             </button>
@@ -138,10 +140,10 @@ const ClassCard = ({
           <button
             onClick={() => setFeedbackPopup(true)}
             disabled={feedbackSubmitted}
-            className={`px-3 py-1 text-xs font-semibold rounded-md shadow-lg focus:outline-none focus:ring-2 transition-all duration-200 ${
+            className={`px-4 py-2 ml-2 rounded-md shadow focus:outline-none ${
               feedbackSubmitted
                 ? "bg-gray-500 text-gray-300 cursor-not-allowed"
-                : "bg-gradient-to-r from-green-500 to-green-600 text-white hover:from-green-400 hover:to-green-500 focus:ring-green-300"
+                : "bg-green-500 text-white hover:bg-green-600"
             }`}
           >
             {feedbackSubmitted ? "Feedback Submitted" : "Give Feedback"}
@@ -150,9 +152,11 @@ const ClassCard = ({
       </div>
 
       {feedbackPopup && (
-        <div className='feedback-popup fixed inset-0 flex items-center justify-center bg-black bg-opacity-50'>
-          <div className='bg-white p-4 rounded-lg shadow-lg w-80'>
-            <h3 className='text-lg font-semibold mb-2'>Submit Feedback</h3>
+        <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50'>
+          <div className='bg-white p-4 rounded-md shadow-lg w-80'>
+            <h3 className='text-lg font-semibold mb-2 text-orange-600'>
+              Submit Feedback
+            </h3>
             <label className='block text-sm mb-2'>Rating (1-5)</label>
             <input
               type='number'
@@ -172,13 +176,13 @@ const ClassCard = ({
             <div className='flex justify-end space-x-2'>
               <button
                 onClick={() => setFeedbackPopup(false)}
-                className='px-3 py-1 text-sm font-semibold text-gray-500 rounded hover:bg-gray-200'
+                className='px-3 py-1 text-sm text-gray-500 hover:bg-gray-200'
               >
                 Cancel
               </button>
               <button
                 onClick={handleFeedbackSubmit}
-                className='px-3 py-1 text-sm font-semibold text-white bg-blue-500 rounded hover:bg-blue-600'
+                className='px-3 py-1 text-sm text-white bg-orange-600 hover:bg-orange-700'
               >
                 Submit
               </button>

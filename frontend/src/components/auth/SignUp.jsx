@@ -125,7 +125,7 @@ const SignUp = () => {
                       id='name'
                       value={formData.name}
                       onChange={handleChange}
-                      className='bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5'
+                      className='bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-orange-600 focus:border-orange-600 block w-full p-2.5'
                       placeholder='John Doe'
                       required
                     />
@@ -143,7 +143,7 @@ const SignUp = () => {
                       id='email'
                       value={formData.email}
                       onChange={handleChange}
-                      className='bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5'
+                      className='bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-orange-600 focus:border-orange-600 block w-full p-2.5'
                       placeholder='name@company.com'
                       required
                     />
@@ -162,7 +162,7 @@ const SignUp = () => {
                       value={formData.password}
                       onChange={handleChange}
                       placeholder='••••••••'
-                      className='bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5'
+                      className='bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-orange-600 focus:border-orange-600 block w-full p-2.5'
                       required
                     />
                   </div>
@@ -183,7 +183,7 @@ const SignUp = () => {
                       id='mobile'
                       value={formData.mobile}
                       onChange={handleChange}
-                      className='bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5'
+                      className='bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-orange-600 focus:border-orange-600 block w-full p-2.5'
                       placeholder='123-456-7890'
                       required
                     />
@@ -200,7 +200,7 @@ const SignUp = () => {
                       id='preferences'
                       value={formData.preferences}
                       onChange={handleChange}
-                      className='bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5'
+                      className='bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-orange-600 focus:border-orange-600 block w-full p-2.5'
                       required
                     >
                       <option value=''>Select...</option>
@@ -224,7 +224,7 @@ const SignUp = () => {
                       id='goals'
                       value={formData.goals}
                       onChange={handleChange}
-                      className='bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5'
+                      className='bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-orange-600 focus:border-orange-600 block w-full p-2.5'
                       required
                     >
                       <option value=''>Select...</option>
@@ -246,7 +246,7 @@ const SignUp = () => {
                       id='role'
                       value={formData.role}
                       onChange={handleChange}
-                      className='bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5'
+                      className='bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-orange-600 focus:border-orange-600 block w-full p-2.5'
                       required
                     >
                       <option value='user'>User</option>
@@ -269,7 +269,7 @@ const SignUp = () => {
                       id='bio'
                       value={trainerData.bio}
                       onChange={handleChange}
-                      className='bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5'
+                      className='bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-orange-600 focus:border-orange-600 block w-full p-2.5'
                       required
                     />
                   </div>
@@ -286,7 +286,7 @@ const SignUp = () => {
                       id='specializations'
                       value={trainerData.specializations}
                       onChange={handleChange}
-                      className='bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5'
+                      className='bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-orange-600 focus:border-orange-600 block w-full p-2.5'
                       placeholder='Yoga, Strength Training, ...'
                       required
                     />
@@ -304,7 +304,7 @@ const SignUp = () => {
                       id='experience'
                       value={trainerData.experience}
                       onChange={handleChange}
-                      className='bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5'
+                      className='bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-orange-600 focus:border-orange-600 block w-full p-2.5'
                       required
                     />
                   </div>
@@ -321,7 +321,7 @@ const SignUp = () => {
                       id='certifications'
                       value={trainerData.certifications}
                       onChange={handleChange}
-                      className='bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5'
+                      className='bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-orange-600 focus:border-orange-600 block w-full p-2.5'
                       placeholder='Certification A, Certification B, ...'
                       required
                     />
@@ -330,7 +330,7 @@ const SignUp = () => {
               )}
               <button
                 type='submit'
-                className='w-full text-white bg-orange-500 hover:bg-orange-700 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center'
+                className='w-full text-white bg-orange-600 hover:bg-orange-700 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center'
               >
                 {step === 3 || (step === 2 && formData.role === "user")
                   ? "Sign Up"

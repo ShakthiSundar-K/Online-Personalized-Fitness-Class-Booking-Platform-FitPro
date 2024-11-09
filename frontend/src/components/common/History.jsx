@@ -18,7 +18,7 @@ function History() {
 
       {/* Right Section - Content */}
       <div className='flex flex-col justify-center px-6 lg:px-12 font-oswald order-1 md:order-2'>
-        <h2 className='text-orange-500 text-xl font-semibold uppercase'>
+        <h2 className='text-orange-600 text-xl font-semibold uppercase'>
           About Us
         </h2>
         <h1 className='text-3xl font-bold mt-2 mb-4 text-white'>

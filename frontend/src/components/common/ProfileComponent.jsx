@@ -64,7 +64,7 @@ const ProfileComponent = () => {
         {userData && (
           <form className='space-y-4'>
             <div className='flex flex-col'>
-              <label className='font-semibold text-orange-500'>Name</label>
+              <label className='font-semibold text-orange-600'>Name</label>
               <input
                 type='text'
                 name='name'
@@ -74,12 +74,12 @@ const ProfileComponent = () => {
                 className={`border ${
                   editMode ? "border-gray-500" : "border-gray-300"
                 } rounded p-2 focus:outline-none focus:ring ${
-                  editMode ? "focus:ring-orange-500" : ""
+                  editMode ? "focus:ring-orange-600" : ""
                 }`}
               />
             </div>
             <div className='flex flex-col'>
-              <label className='font-semibold text-orange-500'>Email</label>
+              <label className='font-semibold text-orange-600'>Email</label>
               <input
                 type='email'
                 name='email'
@@ -89,12 +89,12 @@ const ProfileComponent = () => {
                 className={`border ${
                   editMode ? "border-gray-500" : "border-gray-300"
                 } rounded p-2 focus:outline-none focus:ring ${
-                  editMode ? "focus:ring-orange-500" : ""
+                  editMode ? "focus:ring-orange-600" : ""
                 }`}
               />
             </div>
             <div className='flex flex-col'>
-              <label className='font-semibold text-orange-500'>Mobile</label>
+              <label className='font-semibold text-orange-600'>Mobile</label>
               <input
                 type='text'
                 name='mobile'
@@ -104,12 +104,12 @@ const ProfileComponent = () => {
                 className={`border ${
                   editMode ? "border-gray-500" : "border-gray-300"
                 } rounded p-2 focus:outline-none focus:ring ${
-                  editMode ? "focus:ring-orange-500" : ""
+                  editMode ? "focus:ring-orange-600" : ""
                 }`}
               />
             </div>
             <div className='flex flex-col'>
-              <label className='font-semibold text-orange-500'>
+              <label className='font-semibold text-orange-600'>
                 Preferences
               </label>
               <input
@@ -128,12 +128,12 @@ const ProfileComponent = () => {
                 className={`border ${
                   editMode ? "border-gray-500" : "border-gray-300"
                 } rounded p-2 focus:outline-none focus:ring ${
-                  editMode ? "focus:ring-orange-500" : ""
+                  editMode ? "focus:ring-orange-600" : ""
                 }`}
               />
             </div>
             <div className='flex flex-col'>
-              <label className='font-semibold text-orange-500'>Goals</label>
+              <label className='font-semibold text-orange-600'>Goals</label>
               <input
                 type='text'
                 name='goals'
@@ -148,12 +148,12 @@ const ProfileComponent = () => {
                 className={`border ${
                   editMode ? "border-gray-500" : "border-gray-300"
                 } rounded p-2 focus:outline-none focus:ring ${
-                  editMode ? "focus:ring-orange-500" : ""
+                  editMode ? "focus:ring-orange-600" : ""
                 }`}
               />
             </div>
-            <div className='flex flex-col'>
-              <label className='font-semibold text-orange-500'>
+            {/* <div className='flex flex-col'>
+              <label className='font-semibold text-orange-600'>
                 Availability
               </label>
               <input
@@ -172,10 +172,10 @@ const ProfileComponent = () => {
                 className={`border ${
                   editMode ? "border-gray-500" : "border-gray-300"
                 } rounded p-2 focus:outline-none focus:ring ${
-                  editMode ? "focus:ring-orange-500" : ""
+                  editMode ? "focus:ring-orange-600" : ""
                 }`}
               />
-            </div>
+            </div> */}
 
             <div className='flex justify-end space-x-4 mt-4'>
               <button

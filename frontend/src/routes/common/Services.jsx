@@ -3,7 +3,6 @@ import ServiceHero from "../../components/common/ServiceHero";
 import NavBar from "../../components/common/NavBar";
 import Footer from "../../components/common/Footer";
 import ServiceSection from "../../components/common/ServiceSection";
-import ContactInfo from "../../components/common/ContactInfo";
 
 function Services() {
   return (
@@ -11,7 +10,6 @@ function Services() {
       <NavBar />
       <ServiceHero />
       <ServiceSection />
-      <ContactInfo />
       <Footer />
     </div>
   );

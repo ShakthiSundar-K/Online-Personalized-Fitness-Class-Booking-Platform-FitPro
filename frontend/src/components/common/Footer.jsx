@@ -17,7 +17,7 @@ const Footer = () => {
           <div>
             <div className='flex items-center mb-4'>
               <span className='text-3xl font-bold text-white'>FIT</span>
-              <span className='text-3xl font-bold text-orange-500'>PRO</span>
+              <span className='text-3xl font-bold text-orange-600'>PRO</span>
             </div>
             <p className='text-gray-400 text-sm'>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -147,7 +147,7 @@ const Footer = () => {
           by&nbsp;&nbsp;
           <Link
             to='/about'
-            className='no-underline text-orange-500 hover:underline'
+            className='no-underline text-orange-600 hover:underline'
           >
             SHAKTHI SUNDAR K
           </Link>

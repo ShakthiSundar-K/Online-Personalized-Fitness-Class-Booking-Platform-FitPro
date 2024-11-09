@@ -13,7 +13,7 @@ function About() {
       <AboutHero />
       <History />
       <Testimonials />
-      <ContactInfo />
+
       <Footer />
     </div>
   );

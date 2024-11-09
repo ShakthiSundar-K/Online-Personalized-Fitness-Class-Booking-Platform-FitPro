@@ -46,10 +46,10 @@ function NavBar() {
             <nav aria-label='Global' className='hidden md:block'>
               <ul className='flex items-center gap-6 text-sm'>
                 {filteredOptions.map((option) => (
-                  <li key={option.path} className='hover:text-orange-500'>
+                  <li key={option.path} className='hover:text-orange-600'>
                     <Link
                       to={option.path}
-                      className='text-white transition hover:text-orange-500 active:text-orange-500 font-medium no-underline'
+                      className='text-white transition hover:text-orange-600 active:text-orange-600 font-medium no-underline'
                     >
                       {option.value}
                     </Link>
@@ -149,7 +149,7 @@ function NavBar() {
               <li key={option.path}>
                 <Link
                   to={option.path}
-                  className='text-white transition hover:text-orange-500 active:text-orange-500 font-medium no-underline'
+                  className='text-white transition hover:text-orange-600 active:text-orange-600 font-medium no-underline'
                 >
                   {option.value}
                 </Link>

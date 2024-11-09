@@ -10,8 +10,10 @@ function Classes() {
     <div className='relative bg-black'>
       <NavBar />
       <div className='text-center text-4xl pt-40 pb-10 text-white'>
-        BOOK YOUR <span className='text-orange-500'>FITNESS CLASSES</span>
+        BOOK YOUR{" "}
+        <span className='text-orange-600 block sm:inline'>FITNESS CLASSES</span>
       </div>
+
       <ClassNavBar />
       <div className='pt-32'>
         <Footer />

@@ -104,7 +104,7 @@ const EditClassComponent = () => {
     <div className='bg-black'>
       <NavBar />
       <div className='bg-black pt-32'>
-        <h2 className='text-4xl font-bold mb-6 text-orange-500 text-center pb-10'>
+        <h2 className='text-4xl font-bold mb-6 text-orange-600 text-center pb-10'>
           Edit Class Details
         </h2>
       </div>
@@ -120,7 +120,7 @@ const EditClassComponent = () => {
                 value={classData.classType || ""}
                 onChange={handleInputChange}
                 disabled={!editMode}
-                className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-500'
+                className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-600'
               />
             </div>
 
@@ -133,7 +133,7 @@ const EditClassComponent = () => {
                 value={classData.className || ""}
                 onChange={handleInputChange}
                 disabled={!editMode}
-                className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-500'
+                className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-600'
               />
             </div>
 
@@ -146,7 +146,7 @@ const EditClassComponent = () => {
                 value={classData.capacity || ""}
                 onChange={handleInputChange}
                 disabled={!editMode}
-                className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-500'
+                className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-600'
               />
             </div>
 
@@ -159,7 +159,7 @@ const EditClassComponent = () => {
                 value={classData.timeSlot?.day || ""}
                 onChange={handleTimeSlotChange}
                 disabled={!editMode}
-                className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-500'
+                className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-600'
               />
             </div>
 
@@ -172,7 +172,7 @@ const EditClassComponent = () => {
                 value={classData.timeSlot?.startTime || ""}
                 onChange={handleTimeSlotChange}
                 disabled={!editMode}
-                className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-500'
+                className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-600'
               />
             </div>
 
@@ -185,7 +185,7 @@ const EditClassComponent = () => {
                 value={classData.timeSlot?.endTime || ""}
                 onChange={handleTimeSlotChange}
                 disabled={!editMode}
-                className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-500'
+                className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-600'
               />
             </div>
 
@@ -199,7 +199,7 @@ const EditClassComponent = () => {
                   accept='image/*'
                   onChange={handleFileChange}
                   disabled={!editMode}
-                  className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-500'
+                  className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-600'
                 />
                 {classData.classPic && (
                   <img
@@ -226,7 +226,7 @@ const EditClassComponent = () => {
                 className={`px-4 py-2 rounded ${
                   editMode
                     ? "bg-blue-500 text-white hover:bg-blue-600"
-                    : "bg-orange-500 text-white hover:bg-orange-600"
+                    : "bg-orange-600 text-white hover:bg-orange-600"
                 }`}
                 disabled={editMode && !hasChanges}
               >

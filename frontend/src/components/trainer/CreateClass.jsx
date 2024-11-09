@@ -92,14 +92,14 @@ const CreateClass = () => {
     <div className='bg-black'>
       <NavBar />
       <div className='bg-black pt-32'>
-        <h2 className='text-4xl font-bold mb-6 text-orange-500 text-center pb-10'>
+        <h2 className='text-4xl font-bold mb-6 text-orange-600 text-center pb-10'>
           Create a New Class
         </h2>
       </div>
       <div className='bg-gray-100 p-8 rounded-lg shadow-lg max-w-4xl mx-auto'>
         {loading ? (
           <div className='flex justify-center items-center h-32'>
-            <div className='w-10 h-10 border-4 border-t-transparent border-orange-500 rounded-full animate-spin'></div>
+            <div className='w-10 h-10 border-4 border-t-transparent border-orange-600 rounded-full animate-spin'></div>
           </div>
         ) : (
           <form
@@ -114,7 +114,7 @@ const CreateClass = () => {
                 name='classType'
                 value={formData.classType}
                 onChange={handleInputChange}
-                className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-500'
+                className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-600'
               />
             </div>
 
@@ -126,7 +126,7 @@ const CreateClass = () => {
                 name='className'
                 value={formData.className}
                 onChange={handleInputChange}
-                className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-500'
+                className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-600'
               />
             </div>
 
@@ -140,7 +140,7 @@ const CreateClass = () => {
                 name='duration'
                 value={formData.duration}
                 onChange={handleInputChange}
-                className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-500'
+                className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-600'
               />
             </div>
 
@@ -152,7 +152,7 @@ const CreateClass = () => {
                 name='day'
                 value={formData.timeSlot.day}
                 onChange={handleInputChange}
-                className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-500'
+                className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-600'
               />
             </div>
 
@@ -163,7 +163,7 @@ const CreateClass = () => {
                 name='startTime'
                 value={formData.timeSlot.startTime || ""}
                 onChange={handleInputChange}
-                className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-500'
+                className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-600'
               />
             </div>
 
@@ -175,7 +175,7 @@ const CreateClass = () => {
                 name='endTime'
                 value={formData.timeSlot.endTime}
                 onChange={handleInputChange}
-                className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-500'
+                className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-600'
                 placeholder='HH:MM'
               />
             </div>
@@ -188,7 +188,7 @@ const CreateClass = () => {
                 name='capacity'
                 value={formData.capacity}
                 onChange={handleInputChange}
-                className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-500'
+                className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-600'
               />
             </div>
 
@@ -200,7 +200,7 @@ const CreateClass = () => {
                 name='price'
                 value={formData.price}
                 onChange={handleInputChange}
-                className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-500'
+                className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-600'
               />
             </div>
 
@@ -212,7 +212,7 @@ const CreateClass = () => {
                 name='classLink'
                 value={formData.classLink}
                 onChange={handleInputChange}
-                className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-500'
+                className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-600'
               />
             </div>
 
@@ -225,7 +225,7 @@ const CreateClass = () => {
                 type='file'
                 accept='image/*'
                 onChange={handleFileChange}
-                className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-500'
+                className='border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-orange-600'
               />
             </div>
 
@@ -240,7 +240,7 @@ const CreateClass = () => {
               </button>
               <button
                 type='submit'
-                className='bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600'
+                className='bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-600'
               >
                 Create Class
               </button>

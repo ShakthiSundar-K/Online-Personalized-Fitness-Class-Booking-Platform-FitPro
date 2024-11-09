@@ -91,13 +91,13 @@ const TrainerProfile = () => {
   return (
     <div className='bg-black pb-16 px-0'>
       <div className='text-center text-4xl text-white pt-10 pb-20'>
-        YOUR <span className='text-orange-500'>TRAINER INFO</span>
+        YOUR <span className='text-orange-600'>TRAINER INFO</span>
       </div>
       <div className='max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg'>
         {trainerData && (
           <form className='space-y-4'>
             <div className='flex flex-col'>
-              <label className='font-semibold text-orange-500'>
+              <label className='font-semibold text-orange-600'>
                 Specializations
               </label>
               <input
@@ -116,12 +116,12 @@ const TrainerProfile = () => {
                 className={`border ${
                   editMode ? "border-gray-500" : "border-gray-300"
                 } rounded p-2 focus:outline-none focus:ring ${
-                  editMode ? "focus:ring-orange-500" : ""
+                  editMode ? "focus:ring-orange-600" : ""
                 }`}
               />
             </div>
             <div className='flex flex-col'>
-              <label className='font-semibold text-orange-500'>Bio</label>
+              <label className='font-semibold text-orange-600'>Bio</label>
               <textarea
                 name='bio'
                 value={trainerData.bio}
@@ -130,12 +130,12 @@ const TrainerProfile = () => {
                 className={`border ${
                   editMode ? "border-gray-500" : "border-gray-300"
                 } rounded p-2 focus:outline-none focus:ring ${
-                  editMode ? "focus:ring-orange-500" : ""
+                  editMode ? "focus:ring-orange-600" : ""
                 }`}
               />
             </div>
             <div className='flex flex-col'>
-              <label className='font-semibold text-orange-500'>
+              <label className='font-semibold text-orange-600'>
                 Experience
               </label>
               <input
@@ -147,12 +147,12 @@ const TrainerProfile = () => {
                 className={`border ${
                   editMode ? "border-gray-500" : "border-gray-300"
                 } rounded p-2 focus:outline-none focus:ring ${
-                  editMode ? "focus:ring-orange-500" : ""
+                  editMode ? "focus:ring-orange-600" : ""
                 }`}
               />
             </div>
             <div className='flex flex-col'>
-              <label className='font-semibold text-orange-500'>
+              <label className='font-semibold text-orange-600'>
                 Certifications
               </label>
               <input
@@ -171,14 +171,14 @@ const TrainerProfile = () => {
                 className={`border ${
                   editMode ? "border-gray-500" : "border-gray-300"
                 } rounded p-2 focus:outline-none focus:ring ${
-                  editMode ? "focus:ring-orange-500" : ""
+                  editMode ? "focus:ring-orange-600" : ""
                 }`}
               />
             </div>
 
             {/* Display Average Rating (non-editable) */}
             <div className='flex flex-col'>
-              <label className='font-semibold text-orange-500'>
+              <label className='font-semibold text-orange-600'>
                 Average Rating
               </label>
               <input

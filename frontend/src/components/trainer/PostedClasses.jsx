@@ -25,13 +25,13 @@ const PostedClasses = () => {
   }, []);
 
   return (
-    <div className='p-6 md:p-16 mx-20'>
+    <div className='p-6 md:p-16 mx-8'>
       {isLoading ? (
         <div className='flex justify-center items-start mt-40 h-screen'>
           <div className='w-10 h-10 border-4 border-t-transparent border-white rounded-full animate-spin'></div>
         </div>
       ) : (
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
           {classes.length > 0 ? (
             classes.map((classData) => (
               <TrainerClassCard key={classData.classId} classData={classData} />

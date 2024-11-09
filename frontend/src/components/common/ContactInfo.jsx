@@ -24,7 +24,7 @@ const ContactInfo = () => {
           key={index}
           className='flex items-center text-white md:mx-8 my-4 md:my-0 md:pr-24'
         >
-          <div className='bg-orange-500 p-4 rounded-full text-sm md:text-2xl'>
+          <div className='bg-orange-600 p-4 rounded-full text-sm md:text-2xl'>
             {item.icon}
           </div>
           <div className='flex flex-col text-center md:text-left ml-4'>

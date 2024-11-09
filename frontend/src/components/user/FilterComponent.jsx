@@ -84,12 +84,12 @@ function FilterComponent() {
             placeholder='Search for class names or class categories...'
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className='w-full pl-10 pr-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500'
+            className='w-full pl-10 pr-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-600'
           />
         </div>
         <button
           onClick={searchClasses}
-          className='flex items-center px-4 py-2 bg-orange-500 text-white rounded-md '
+          className='flex items-center px-4 py-2 bg-orange-600 text-white rounded-md '
           disabled={loading}
         >
           {loading ? (
@@ -108,32 +108,32 @@ function FilterComponent() {
               type='date'
               value={selectedDate}
               onChange={(e) => setSelectedDate(e.target.value)}
-              className='p-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 w-full'
+              className='p-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-600 w-full'
             />
             <input
               type='time'
               value={selectedTime}
               onChange={(e) => setSelectedTime(e.target.value)}
-              className='p-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 w-full'
+              className='p-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-600 w-full'
             />
             <input
               type='number'
               placeholder='Min Price'
               value={minPrice}
               onChange={(e) => setMinPrice(e.target.value)}
-              className='p-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 w-full'
+              className='p-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-600 w-full'
             />
             <input
               type='number'
               placeholder='Max Price'
               value={maxPrice}
               onChange={(e) => setMaxPrice(e.target.value)}
-              className='p-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 w-full'
+              className='p-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-600 w-full'
             />
           </div>
           <button
             onClick={fetchFilteredClasses}
-            className='w-full mt-4 px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600'
+            className='w-full mt-4 px-4 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-600'
             disabled={loading}
           >
             {loading ? (
@@ -152,7 +152,7 @@ function FilterComponent() {
           <div className='w-10 h-10 border-4 border-t-transparent border-white rounded-full animate-spin'></div>
         </div>
       ) : (
-        <div className='class-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mt-4 mx-8 md:mx-0'>
+        <div className='class-grid grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-4 gap-8 mt-4 mx-3'>
           {classes.length > 0 ? (
             classes.map((classData) => (
               <ClassCard key={classData._id} classData={classData} isBookable />

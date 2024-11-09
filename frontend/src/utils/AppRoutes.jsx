@@ -9,7 +9,7 @@ import TrainerGuard from "./TrainerGuard";
 import About from "../routes/common/About";
 import Services from "../routes/common/Services";
 import Classes from "../routes/user/Classes";
-import Class from "../routes/trainer/Class";
+import Class from "../components/user/trainer/Class";
 import Trainers from "../routes/user/Trainers";
 import AdminGuard from "./AdminGuard";
 import UserManagement from "../routes/admin/UserManagement";

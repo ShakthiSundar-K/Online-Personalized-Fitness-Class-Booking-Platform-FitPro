@@ -15,8 +15,9 @@ function Home() {
       <FeaturesSection />
       <Gallery />
       <BookCta />
-      <ContactInfo />
-      <Footer />
+      <div className='pt-20'>
+        <Footer />
+      </div>
     </div>
   );
 }

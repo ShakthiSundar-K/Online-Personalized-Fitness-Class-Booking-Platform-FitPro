@@ -3,14 +3,36 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      animation: {
+        zoomIn: "zoomIn 10s ease-in-out infinite",
+        fadeIn: "fadeIn 1s ease-out forwards",
+        fadeInUp: "fadeInUp 1s ease-out forwards",
+        fadeInAndSlideUp: "fadeInAndSlideUp 1s ease-out forwards",
+      },
+      keyframes: {
+        zoomIn: {
+          "0%, 100%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.05)" },
+        },
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        fadeInUp: {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        fadeInAndSlideUp: {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+      }, // Add the missing comma here
       colors: {
         "custom-blue": "#1fb6ff",
       },
       backgroundImage: {
-        "app-bg":
-          "url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fphotos%2Fnoise-texture&psig=AOvVaw3S6cYeyZEPET292g59noS-&ust=1730527935956000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCIjRi4m9uokDFQAAAAAdAAAAABAJ')",
+        "app-bg": "url('https://www.istockphoto.com/photos/noise-texture')",
       },
-      // Add custom utilities
       backgroundColor: {
         app: "#151515",
       },
@@ -18,8 +40,8 @@ export default {
         overlay: "overlay",
       },
       fontFamily: {
-        inter: ["'Inter'", "sans-serif"], // Add Inter font
-        oswald: ["'Oswald'", "sans-serif"], // Add Oswald font
+        inter: ["'Inter'", "sans-serif"],
+        oswald: ["'Oswald'", "sans-serif"],
       },
     },
   },

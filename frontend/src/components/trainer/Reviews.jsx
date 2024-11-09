@@ -27,7 +27,7 @@ const Reviews = () => {
   return (
     <div className='px-20 pt-20 bg-black shadow-lg font-oswald'>
       <NavBar />
-      <h2 className='text-4xl font-bold text-orange-500 mb-10 mt-20 text-center'>
+      <h2 className='text-4xl font-bold text-orange-600 mb-10 mt-20 text-center'>
         CLASS REVIEWS
       </h2>
       <div className='h-96 overflow-y-auto  scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-900 border-2 border-neutral-400  p-2 bg-black mx-36'>
