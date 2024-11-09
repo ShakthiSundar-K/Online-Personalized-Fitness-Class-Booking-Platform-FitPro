@@ -13,7 +13,6 @@ dist-ssr
 *.local
 unwanted
 
-.env
 
 # Editor directories and files
 .vscode/*
