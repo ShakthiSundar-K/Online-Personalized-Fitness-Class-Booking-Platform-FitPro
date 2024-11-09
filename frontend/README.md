@@ -1,8 +1,13 @@
-# React + Vite
+# IMPORTANT NOTE:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### **For making payment kindly use the below test account, as the paypal account used is a test sandbox account. Other accounts might not work**
 
-Currently, two official plugins are available:
+**Email:** ``` sb-iwnre33786275@business.example.com ```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Password:** ``` Ype<8a+7 ```
+
+### For detailed documentation, please refer to the readme file of the root directory
+
+```
+https://github.com/ShakthiSundar-K/Online-Personalized-Fitness-Class-Booking-Platform-FitPro/
+```
