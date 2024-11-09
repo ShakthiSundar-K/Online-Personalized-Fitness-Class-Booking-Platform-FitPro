@@ -30,8 +30,8 @@ const createPayment = async (req, res) => {
       },
     ],
     redirect_urls: {
-      return_url: `http://localhost:5173/paymentsuccess?classId=${classId}`,
-      cancel_url: `http://localhost:5173/paymentcancel?classId=${classId}`,
+      return_url: `https://fitpro270.vercel.app/paymentsuccess?classId=${classId}`,
+      cancel_url: `https://fitpro270.vercel.app/paymentcancel?classId=${classId}`,
     },
   };
 
