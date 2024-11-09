@@ -545,15 +545,11 @@ The **Payment Controller** manages PayPal payment processing and booking creatio
 
 ## 9. Deployment
 
-### Frontend Deployment on Vercel
-1. Link the GitHub repository to Netlify.
-2. Add frontend environment variables in Netlify.
-3. Deploy the frontend by pushing changes to the main branch.
+### Frontend Deployment on Netlify
+[FitPro365 Frontend Deployed URL](https://fitpro365.netlify.app/)
 
 ### Backend Deployment on Render
-1. Create a new web service on Render, linking the GitHub repository.
-2. Add backend environment variables in Render.
-3. Deploy by pushing changes to the main branch.
+[FitPro365 Backend Deployed URL](https://online-personalized-fitness-class.onrender.com)
 
 
 
