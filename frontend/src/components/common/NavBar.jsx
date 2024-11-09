@@ -59,7 +59,7 @@ function NavBar() {
             </nav>
 
             {/* Profile Button and Dropdown */}
-            <div className='hidden md:relative md:block'>
+            <div className='relative hidden md:block'>
               <button
                 type='button'
                 className='overflow-hidden rounded-full border border-gray-300 shadow-inner'
@@ -68,14 +68,14 @@ function NavBar() {
                 <span className='sr-only'>Toggle dashboard menu</span>
                 <img
                   src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-                  alt=''
-                  className='size-10 object-cover'
+                  alt='Profile'
+                  className='h-10 w-10 object-cover'
                 />
               </button>
 
               {isDropdownOpen && (
                 <div
-                  className='absolute end-0 z-10 mt-0.5 w-56 divide-y divide-gray-100 rounded-md border border-gray-100 bg-white shadow-lg'
+                  className='absolute right-0 z-10 mt-2 w-56 divide-y divide-gray-100 rounded-md border border-gray-100 bg-white shadow-lg'
                   role='menu'
                 >
                   <div className='p-2'>
@@ -100,12 +100,12 @@ function NavBar() {
                         viewBox='0 0 24 24'
                         strokeWidth='1.5'
                         stroke='currentColor'
-                        className='size-4'
+                        className='w-5 h-5'
                       >
                         <path
                           strokeLinecap='round'
                           strokeLinejoin='round'
-                          d='M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3'
+                          d='M9 15L3 9m0 0l6-6M3 9h12a6 6 0 0 1 0 12h-3'
                         />
                       </svg>
                       Logout
@@ -120,10 +120,11 @@ function NavBar() {
               <button
                 className='rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75'
                 onClick={toggleMobileMenu}
+                style={{ fontSize: "1.5rem" }}
               >
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
-                  className='size-5'
+                  className='w-6 h-6'
                   fill='none'
                   viewBox='0 0 24 24'
                   stroke='currentColor'
@@ -136,6 +137,19 @@ function NavBar() {
                   />
                 </svg>
               </button>
+
+              {/* Profile icon for mobile */}
+              <button
+                type='button'
+                className='ml-3 overflow-hidden rounded-full border border-gray-300 shadow-inner'
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              >
+                <img
+                  src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                  alt='Profile'
+                  className='h-8 w-8 object-cover'
+                />
+              </button>
             </div>
           </div>
         </div>
@@ -143,13 +157,13 @@ function NavBar() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <nav className='md:hidden'>
-          <ul className='flex flex-col gap-4 p-4 text-sm'>
+        <nav className='md:hidden bg-white shadow-lg p-4'>
+          <ul className='flex flex-col gap-4'>
             {filteredOptions.map((option) => (
               <li key={option.path}>
                 <Link
                   to={option.path}
-                  className='text-white transition hover:text-orange-600 active:text-orange-600 font-medium no-underline'
+                  className='text-gray-900 font-medium hover:text-orange-600'
                 >
                   {option.value}
                 </Link>
@@ -157,6 +171,44 @@ function NavBar() {
             ))}
           </ul>
         </nav>
+      )}
+
+      {/* Mobile Profile Dropdown */}
+      {isDropdownOpen && (
+        <div className='md:hidden absolute right-3 top-16 z-10 w-48 divide-y divide-gray-100 rounded-md border border-gray-100 bg-white shadow-lg'>
+          <div className='p-2'>
+            <Link
+              to='/profile'
+              className='block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700'
+              role='menuitem'
+            >
+              My profile
+            </Link>
+          </div>
+          <div className='p-2'>
+            <button
+              onClick={logout}
+              className='flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50'
+              role='menuitem'
+            >
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                fill='none'
+                viewBox='0 0 24 24'
+                strokeWidth='1.5'
+                stroke='currentColor'
+                className='w-5 h-5'
+              >
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  d='M9 15L3 9m0 0l6-6M3 9h12a6 6 0 0 1 0 12h-3'
+                />
+              </svg>
+              Logout
+            </button>
+          </div>
+        </div>
       )}
     </header>
   );
