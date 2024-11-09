@@ -72,8 +72,8 @@ function TrainerFilterComponent() {
   };
 
   return (
-    <div className='filter-component p-4 md:px-32 md:py-32 bg-black relative'>
-      <h1 className='text-4xl font-bold text-center mb-10 mt-3 font-oswald'>
+    <div className='filter-component p-4 md:px-32 md:py-32  bg-black relative'>
+      <h1 className='text-4xl font-bold text-center mb-14 mt-20 md:mt-8 font-oswald'>
         <span className='text-white'>OUR</span>{" "}
         <span className='text-orange-600'>TRAINERS</span>
       </h1>
