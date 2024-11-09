@@ -92,7 +92,7 @@ const forgotPassword = async (req, res) => {
     await user.save();
 
     // Create reset URL
-    const resetUrl = `https://fitpro270.vercel.app/resetpassword/${resetToken}`;
+    const resetUrl = `https://online-personalized-fitness-class-booking-platform-fit-pro.vercel.app/resetpassword/${resetToken}`;
 
     // Send email with the reset link
     await sendEmail(
