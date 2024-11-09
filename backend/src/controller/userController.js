@@ -9,7 +9,7 @@ import { sendEmail } from "../service/emailService.js";
 const getUserInfoById = async (req, res) => {
   try {
     const userId = req.user.id;
-    console.log("User ID from token:", userId);
+    // console.log("User ID from token:", userId);
 
     const user = await User.findOne({ id: userId });
     if (!user) {
@@ -25,7 +25,7 @@ const getUserInfoById = async (req, res) => {
 const editUserProfile = async (req, res) => {
   try {
     const { id } = req.user; // UUID
-    console.log("User ID from token:", id);
+    // console.log("User ID from token:", id);
     const user = await User.findOneAndUpdate({ id: id }, req.body, {
       new: true,
     });

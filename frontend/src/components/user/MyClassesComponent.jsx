@@ -12,7 +12,7 @@ function MyClassesComponent() {
       try {
         const { path, authenticate } = ApiRoutes.VIEW_MY_CLASSES;
         const response = await api.get(path, { authenticate });
-        console.log(response); // Check if this outputs the array of classes as expected
+        // console.log(response); // Check if this outputs the array of classes as expected
         setMyClasses(Array.isArray(response.upcoming) ? response.upcoming : []);
       } catch (err) {
         console.error(err);
