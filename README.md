@@ -300,7 +300,7 @@ Each of the models is designed to support the primary functionality of the appli
 
 ## 7.Controller and API Explanations
 
-### User Controller
+### Auth Controller
 
 The User Controller handles user authentication and account management, including registration, login, and password management. The key operations are as follows:
 
