@@ -51,6 +51,14 @@ const login = async (req, res) => {
           role: user.role,
           id: user.id,
         });
+
+        res.cookie("auth_token", token, {
+          httpOnly: true, // Helps prevent XSS attacks
+          secure: false,
+          sameSite: "None", // Allows cross-origin requests
+          maxAge: 24 * 60 * 60 * 1000, // Set cookie to expire in 1 day
+        });
+
         res.status(200).send({
           message: "Login Successfull",
           role: user.role,
