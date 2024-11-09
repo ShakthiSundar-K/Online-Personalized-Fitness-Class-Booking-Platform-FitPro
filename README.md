@@ -1,8 +1,15 @@
+# IMPORTANT NOTE:
+
+### **For making payment kindly use the below test account, as the paypal account used is a test sandbox account. Other accounts might not work.**
+
+**Email:** ``` sb-iwnre33786275@business.example.com ```
+
+**Password:** ``` Ype<8a+7 ```
+
+
 # Project Overview
 
 FitPro is designed to provide a seamless experience for both fitness enthusiasts and trainers. Users can browse, book, and track fitness classes, while trainers can create and manage personalized fitness programs. FitPro also features a review system, payment gateway integration, and real-time notifications.
-
-
 
 ## Table of Contents
 
@@ -11,8 +18,8 @@ FitPro is designed to provide a seamless experience for both fitness enthusiasts
 3. [Installation and Setup](#installation-and-setup)
 4. [Project Structure](#project-structure)
 5. [Environment Variables](#environment-variables)
-6. [Database Models](#Database-Models)
-7. [Controller and API Explanations](#controoler-api)
+6. [Database Models](#database-models)
+7. [Controller and API Explanations](#controller-api)
 8. [Postman Documentation](#postman-documentation)
 9. [Deployment](#deployment)
 10. [License](#license)
