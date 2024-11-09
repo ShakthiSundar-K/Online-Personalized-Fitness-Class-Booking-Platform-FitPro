@@ -30,8 +30,8 @@ const createPayment = async (req, res) => {
       },
     ],
     redirect_urls: {
-      return_url: `https://online-personalized-fitnes-git-fb28dd-shakthisundar-ks-projects.vercel.app/paymentsuccess?classId=${classId}`,
-      cancel_url: `https://online-personalized-fitnes-git-fb28dd-shakthisundar-ks-projects.vercel.app/paymentcancel?classId=${classId}`,
+      return_url: `http://localhost:5173/paymentsuccess?classId=${classId}`,
+      cancel_url: `http://localhost:5173/paymentcancel?classId=${classId}`,
     },
   };
 
