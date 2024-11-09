@@ -93,7 +93,7 @@ const SignUp = () => {
 
   return (
     <section className='h-screen flex items-center justify-center'>
-      <div className='flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0'>
+      <div className='flex flex-col w-96 items-center justify-center px-6 pb-12 mx-auto md:h-screen lg:py-0'>
         <a
           href='#'
           className='flex items-center text-2xl font-semibold text-gray-900'
@@ -188,6 +188,7 @@ const SignUp = () => {
                       required
                     />
                   </div>
+
                   <div>
                     <label
                       htmlFor='preferences'
@@ -205,13 +206,30 @@ const SignUp = () => {
                     >
                       <option value=''>Select...</option>
                       <option value='yoga'>Yoga</option>
-                      <option value='strength'>Strength</option>
+                      <option value='strength'>Strength Training</option>
                       <option value='cardio'>Cardio</option>
                       <option value='dance'>Dance</option>
                       <option value='pilates'>Pilates</option>
                       <option value='boxing'>Boxing</option>
+                      <option value='crossfit'>CrossFit</option>
+                      <option value='hiit'>
+                        HIIT (High-Intensity Interval Training)
+                      </option>
+                      <option value='cycling'>Cycling/Spinning</option>
+                      <option value='zumba'>Zumba</option>
+                      <option value='kickboxing'>Kickboxing</option>
+                      <option value='swimming'>Swimming</option>
+                      <option value='martial arts'>Martial Arts</option>
+                      <option value='stretching'>Stretching</option>
+                      <option value='barre'>Barre</option>
+                      <option value='bootcamp'>Bootcamp</option>
+                      <option value='mindfulness'>Mindfulness</option>
+                      <option value='aerobics'>Aerobics</option>
+                      <option value='calisthenics'>Calisthenics</option>
+                      <option value='powerlifting'>Powerlifting</option>
                     </select>
                   </div>
+
                   <div>
                     <label
                       htmlFor='goals'
@@ -232,8 +250,27 @@ const SignUp = () => {
                       <option value='muscle gain'>Muscle Gain</option>
                       <option value='flexibility'>Flexibility</option>
                       <option value='stamina'>Stamina</option>
+                      <option value='endurance'>Endurance</option>
+                      <option value='stress relief'>Stress Relief</option>
+                      <option value='balance'>Balance</option>
+                      <option value='recovery'>
+                        Recovery and Rehabilitation
+                      </option>
+                      <option value='toning'>Toning</option>
+                      <option value='agility'>Agility</option>
+                      <option value='core strength'>Core Strength</option>
+                      <option value='general fitness'>General Fitness</option>
+                      <option value='functional fitness'>
+                        Functional Fitness
+                      </option>
+                      <option value='mobility'>Mobility</option>
+                      <option value='athletic training'>
+                        Athletic Training
+                      </option>
+                      <option value='heart health'>Heart Health</option>
                     </select>
                   </div>
+
                   <div>
                     <label
                       htmlFor='role'
