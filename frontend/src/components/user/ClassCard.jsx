@@ -119,7 +119,7 @@ const ClassCard = ({
         </p>
       </div>
       <div className='flex items-center justify-between mt-4'>
-        <span className='text-lg font-semibold text-gray-800'>₹{price}</span>
+        <span className='text-lg font-semibold text-gray-800'>${price}</span>
         {isButton &&
           (isBookable ? (
             <button
