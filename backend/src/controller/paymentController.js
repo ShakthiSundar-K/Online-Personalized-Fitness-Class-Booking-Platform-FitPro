@@ -30,8 +30,8 @@ const createPayment = async (req, res) => {
       },
     ],
     redirect_urls: {
-      return_url: `https://online-personalized-fitness-class-booking-platform-fit-pro.vercel.app/paymentsuccess?classId=${classId}`,
-      cancel_url: `https://online-personalized-fitness-class-booking-platform-fit-pro.vercel.app/paymentcancel?classId=${classId}`,
+      return_url: `https://fitpro365.netlify.app/paymentsuccess?classId=${classId}`,
+      cancel_url: `https://fitpro365.netlify.app/paymentcancel?classId=${classId}`,
     },
   };
 
