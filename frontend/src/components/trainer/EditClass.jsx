@@ -95,6 +95,24 @@ const EditClassComponent = () => {
     }
   };
 
+  // Cancel class
+  const handleCancelClass = async () => {
+    try {
+      const path = ApiRoutes.CANCEL_CLASS.path.replace(":classId", classId);
+      const authenticate = ApiRoutes.CANCEL_CLASS.authenticate;
+      const response = await api.put(path, {}, { authenticate });
+      if (response) {
+        toast.success("Class has been canceled.");
+        navigate("/trainer/class"); // Navigate after cancellation
+      } else {
+        toast.error("Failed to cancel the class. Please try again.");
+      }
+    } catch (error) {
+      console.error("Class cancellation error:", error);
+      toast.error("Error in canceling class.");
+    }
+  };
+
   // Handle Back button click
   const handleBack = () => {
     navigate("/trainer/class");
@@ -226,19 +244,24 @@ const EditClassComponent = () => {
                 className={`px-4 py-2 rounded ${
                   editMode
                     ? "bg-blue-500 text-white hover:bg-blue-600"
-                    : "bg-orange-600 text-white hover:bg-orange-600"
+                    : "bg-orange-600 text-white hover:bg-orange-700"
                 }`}
-                disabled={editMode && !hasChanges}
               >
                 {editMode ? "Save Changes" : "Edit"}
+              </button>
+              <button
+                type='button'
+                onClick={handleCancelClass}
+                disabled={classData.status === "canceled"}
+                className='bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600'
+              >
+                Cancel Class
               </button>
             </div>
           </form>
         )}
       </div>
-      <div className='pt-14'>
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 };

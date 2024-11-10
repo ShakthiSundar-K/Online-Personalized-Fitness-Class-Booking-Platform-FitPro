@@ -211,6 +211,7 @@ const SignUp = () => {
                       <option value='dance'>Dance</option>
                       <option value='pilates'>Pilates</option>
                       <option value='boxing'>Boxing</option>
+                      <option value='bodybuilding'>Body Building</option>
                       <option value='crossfit'>CrossFit</option>
                       <option value='hiit'>
                         HIIT (High-Intensity Interval Training)

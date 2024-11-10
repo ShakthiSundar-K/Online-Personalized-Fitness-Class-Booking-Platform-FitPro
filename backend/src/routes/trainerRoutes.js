@@ -15,7 +15,7 @@ router.get(
   verifyAuth,
   trainerController.viewBookedUsers
 );
-router.post("/cancelClass/:classId", verifyAuth, trainerController.cancelClass);
+router.put("/cancelClass/:classId", verifyAuth, trainerController.cancelClass);
 router.get(
   "/viewPostedClasses",
   verifyAuth,

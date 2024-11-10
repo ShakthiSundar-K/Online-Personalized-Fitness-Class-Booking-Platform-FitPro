@@ -95,6 +95,10 @@ const ApiRoutes = {
     path: "/trainers/editClass/:classId",
     authenticate: true,
   },
+  CANCEL_CLASS: {
+    path: "/trainers/cancelClass/:classId",
+    authenticate: true,
+  },
 };
 
 export default ApiRoutes;
