@@ -424,7 +424,7 @@ const viewTrainerById = async (req, res) => {
 
     // Step 2: Use trainerId to find all associated classes
     const classes = await Class.find({ trainerId: req.params.userId }).select(
-      "classType className duration timeSlot  price bookedCount classId"
+      "classType className duration timeSlot  price bookedCount classId classPic"
     );
 
     // Step 3: Combine trainer and classes data into a single response
