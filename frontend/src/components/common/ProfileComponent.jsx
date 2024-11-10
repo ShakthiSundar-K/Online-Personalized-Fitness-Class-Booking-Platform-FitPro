@@ -38,6 +38,19 @@ const ProfileComponent = () => {
     setHasChanges(true);
   };
 
+  // Handle image upload
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setUserData({ ...userData, profilePicture: reader.result });
+        setHasChanges(true);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   // Save updated profile data
   const handleSave = async () => {
     try {
@@ -60,7 +73,6 @@ const ProfileComponent = () => {
   return (
     <div className='bg-black pb-16 px-0'>
       <div className='max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg'>
-        {/* <h2 className='text-2xl font-bold text-center mb-4'>User Profile</h2> */}
         {userData && (
           <form className='space-y-4'>
             <div className='flex flex-col'>
@@ -110,72 +122,24 @@ const ProfileComponent = () => {
             </div>
             <div className='flex flex-col'>
               <label className='font-semibold text-orange-600'>
-                Preferences
+                Profile Picture
               </label>
-              <input
-                type='text'
-                name='preferences'
-                value={userData.preferences?.join(", ") || ""}
-                onChange={(e) =>
-                  setUserData({
-                    ...userData,
-                    preferences: e.target.value
-                      .split(",")
-                      .map((pref) => pref.trim()),
-                  })
-                }
-                disabled={!editMode}
-                className={`border ${
-                  editMode ? "border-gray-500" : "border-gray-300"
-                } rounded p-2 focus:outline-none focus:ring ${
-                  editMode ? "focus:ring-orange-600" : ""
-                }`}
-              />
+              {userData.profilePicture && (
+                <img
+                  src={userData.profilePicture}
+                  alt='Profile'
+                  className='w-24 h-24 rounded-full mb-2'
+                />
+              )}
+              {editMode && (
+                <input
+                  type='file'
+                  accept='image/*'
+                  onChange={handleImageUpload}
+                  className='border border-gray-300 rounded p-2 focus:outline-none'
+                />
+              )}
             </div>
-            <div className='flex flex-col'>
-              <label className='font-semibold text-orange-600'>Goals</label>
-              <input
-                type='text'
-                name='goals'
-                value={userData.goals?.join(", ") || ""}
-                onChange={(e) =>
-                  setUserData({
-                    ...userData,
-                    goals: e.target.value.split(",").map((goal) => goal.trim()),
-                  })
-                }
-                disabled={!editMode}
-                className={`border ${
-                  editMode ? "border-gray-500" : "border-gray-300"
-                } rounded p-2 focus:outline-none focus:ring ${
-                  editMode ? "focus:ring-orange-600" : ""
-                }`}
-              />
-            </div>
-            {/* <div className='flex flex-col'>
-              <label className='font-semibold text-orange-600'>
-                Availability
-              </label>
-              <input
-                type='text'
-                name='availability'
-                value={userData.availability?.join(", ") || ""}
-                onChange={(e) =>
-                  setUserData({
-                    ...userData,
-                    availability: e.target.value
-                      .split(",")
-                      .map((time) => time.trim()),
-                  })
-                }
-                disabled={!editMode}
-                className={`border ${
-                  editMode ? "border-gray-500" : "border-gray-300"
-                } rounded p-2 focus:outline-none focus:ring ${
-                  editMode ? "focus:ring-orange-600" : ""
-                }`}
-              />
-            </div> */}
 
             <div className='flex justify-end space-x-4 mt-4'>
               <button

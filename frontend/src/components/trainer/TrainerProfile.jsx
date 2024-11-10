@@ -14,6 +14,7 @@ const TrainerProfile = () => {
       averageRating: null,
       totalReviews: 0,
     },
+    profilePictureUrl: null, // Holds Base64 profile picture data
   });
   const [editMode, setEditMode] = useState(false);
   const [hasChanges, setHasChanges] = useState(false);
@@ -38,6 +39,7 @@ const TrainerProfile = () => {
               averageRating: response.trainer.rating.averageRating,
               totalReviews: response.trainer.rating.totalReviews,
             },
+            profilePictureUrl: response.trainer.profilePictureUrl,
           });
         } else {
           toast.error("Failed to fetch trainer data.");
@@ -54,6 +56,22 @@ const TrainerProfile = () => {
   const handleInputChange = (e) => {
     setTrainerData({ ...trainerData, [e.target.name]: e.target.value });
     setHasChanges(true);
+  };
+
+  // Handle file input for profile picture upload
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setTrainerData((prevData) => ({
+          ...prevData,
+          profilePictureUrl: reader.result, // Store Base64 image data
+        }));
+        setHasChanges(true);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   // Handle saving updated data
@@ -96,6 +114,27 @@ const TrainerProfile = () => {
       <div className='max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg'>
         {trainerData && (
           <form className='space-y-4'>
+            {/* Profile Picture Upload */}
+            <div className='flex flex-col'>
+              <label className='font-semibold text-orange-600'>
+                Profile Picture
+              </label>
+              <input
+                type='file'
+                accept='image/*'
+                onChange={handleFileChange}
+                disabled={!editMode}
+                className='border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-orange-600'
+              />
+              {trainerData.profilePictureUrl && (
+                <img
+                  src={trainerData.profilePictureUrl}
+                  alt='Profile'
+                  className='mt-4 w-32 h-32 rounded-full object-cover'
+                />
+              )}
+            </div>
+
             <div className='flex flex-col'>
               <label className='font-semibold text-orange-600'>
                 Specializations
@@ -120,6 +159,7 @@ const TrainerProfile = () => {
                 }`}
               />
             </div>
+
             <div className='flex flex-col'>
               <label className='font-semibold text-orange-600'>Bio</label>
               <textarea
@@ -134,6 +174,7 @@ const TrainerProfile = () => {
                 }`}
               />
             </div>
+
             <div className='flex flex-col'>
               <label className='font-semibold text-orange-600'>
                 Experience
@@ -151,6 +192,7 @@ const TrainerProfile = () => {
                 }`}
               />
             </div>
+
             <div className='flex flex-col'>
               <label className='font-semibold text-orange-600'>
                 Certifications
