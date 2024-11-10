@@ -72,7 +72,7 @@ const SignUp = () => {
             .map((item) => item.trim()),
         };
 
-        await api.post(
+        await api.put(
           ApiRoutes.CREATE_TRAINER_PROFILE.path,
           trainerProfileData,
           {

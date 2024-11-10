@@ -40,11 +40,9 @@ const UserSchema = new mongoose.Schema(
     },
     preferences: {
       type: [String],
-      enum: ["yoga", "strength", "cardio", "dance", "pilates", "boxing"],
     },
     goals: {
       type: [String],
-      enum: ["weight loss", "muscle gain", "flexibility", "stamina"],
     },
     availability: {
       type: [String],
