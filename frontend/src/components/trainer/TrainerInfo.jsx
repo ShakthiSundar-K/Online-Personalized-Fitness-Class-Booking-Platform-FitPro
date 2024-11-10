@@ -43,6 +43,7 @@ function TrainerInfo() {
         const response = await api.get(path.replace(":userId", userId), {
           authenticate,
         });
+
         setTrainerData(response);
       } catch (error) {
         console.error("Error fetching trainer data:", error);
@@ -68,7 +69,7 @@ function TrainerInfo() {
         <div className='w-full md:w-1/2 flex items-center justify-center'>
           <div className='w-80 h-80 bg-[#151515] shadow-lg rounded-lg overflow-hidden flex items-center justify-center'>
             <img
-              src={trainer.profilePictureUrl || "/placeholder-image.jpg"}
+              src={trainer.profilePic || "/placeholder-image.jpg"}
               alt={trainer.userDetails.name}
               className='object-cover w-full h-full'
             />
