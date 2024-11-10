@@ -371,12 +371,17 @@ const submitFeedback = async (req, res) => {
     }
 
     // Calculate the new average rating
-    const updatedTotalReviews = trainer.rating.totalReviews + 1;
+    const updatedTotalReviews = Number(trainer.rating.totalReviews) + 1;
     console.log(updatedTotalReviews);
+
     console.log(rating);
     console.log(trainer.rating.averageRating);
-    const updatedAverageRatingNum = trainer.rating.averageRating + rating;
+
+    // Explicitly convert both `averageRating` and `rating` to numbers
+    const updatedAverageRatingNum =
+      Number(trainer.rating.averageRating) + Number(rating);
     console.log(updatedAverageRatingNum);
+
     const updatedAverageRatingDeno = updatedTotalReviews;
     console.log(updatedAverageRatingDeno);
 
