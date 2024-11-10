@@ -375,8 +375,13 @@ const submitFeedback = async (req, res) => {
     console.log(updatedTotalReviews);
     console.log(rating);
     console.log(trainer.rating.averageRating);
+    const updatedAverageRatingNum = trainer.rating.averageRating + rating;
+    console.log(updatedAverageRatingNum);
+    const updatedAverageRatingDeno = updatedTotalReviews;
+    console.log(updatedAverageRatingDeno);
+
     const updatedAverageRating =
-      (trainer.rating.averageRating + rating) / updatedTotalReviews;
+      updatedAverageRatingNum / updatedAverageRatingDeno;
 
     // Update the trainer's rating
     trainer.rating.averageRating = updatedAverageRating;
