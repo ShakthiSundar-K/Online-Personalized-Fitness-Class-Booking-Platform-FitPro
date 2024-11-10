@@ -1,15 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/horizontallogo.png";
+import api from "../../service/ApiService";
+import ApiRoutes from "../../utils/ApiRoutes";
 import useLogout from "../../hooks/useLogut";
 
 function NavBar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [profilePic, setProfilePic] = useState(""); // State for profile picture
   const role = sessionStorage.getItem("role");
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
   const logout = useLogout();
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      try {
+        const userId = sessionStorage.getItem("id");
+        const path = ApiRoutes.GET_USER_INFO_BY_ID.path.replace(
+          ":userId",
+          userId
+        );
+        const authenticate = ApiRoutes.GET_USER_INFO_BY_ID.authenticate;
+        const response = await api.get(path, { authenticate });
+        // console.log(response.user.profilepic);
+        setProfilePic(response.user.profilepic); // Update profile pic state
+      } catch (error) {
+        console.error("Error fetching user profile:", error);
+      }
+    };
+    fetchUserProfile();
+  }, []);
 
   const options = [
     { value: "HOME", path: "/home", role: ["trainer", "user"] },
@@ -67,7 +89,10 @@ function NavBar() {
               >
                 <span className='sr-only'>Toggle dashboard menu</span>
                 <img
-                  src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                  src={
+                    profilePic ||
+                    "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  }
                   alt='Profile'
                   className='h-10 w-10 object-cover'
                 />
@@ -145,7 +170,10 @@ function NavBar() {
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               >
                 <img
-                  src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                  src={
+                    profilePic ||
+                    "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  }
                   alt='Profile'
                   className='h-8 w-8 object-cover'
                 />

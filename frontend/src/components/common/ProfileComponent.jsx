@@ -44,7 +44,7 @@ const ProfileComponent = () => {
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setUserData({ ...userData, profilePicture: reader.result });
+        setUserData({ ...userData, profilepic: reader.result });
         setHasChanges(true);
       };
       reader.readAsDataURL(file);
@@ -56,6 +56,7 @@ const ProfileComponent = () => {
     try {
       const path = ApiRoutes.EDIT_USER_PROFILE.path.replace(":userId", userId);
       const authenticate = ApiRoutes.EDIT_USER_PROFILE.authenticate;
+      // console.log(userData);
       const response = await api.put(path, userData, { authenticate });
       if (response) {
         toast.success("Profile updated successfully.");
