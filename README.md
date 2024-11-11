@@ -1,6 +1,6 @@
 # IMPORTANT NOTE:
 
-### **1. For making payment kindly use the below test account, as the paypal account used is a test sandbox account. Other accounts might not work.**
+### **1. For making payment kindly use the below test account, as the paypal account used is a test sandbox account. Other Indian accounts might not work.**
 
 **Email:** ``` sb-iwnre33786275@business.example.com ```
 
