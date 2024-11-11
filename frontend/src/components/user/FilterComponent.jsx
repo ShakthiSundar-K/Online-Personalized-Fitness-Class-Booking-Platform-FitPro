@@ -89,7 +89,7 @@ function FilterComponent() {
         </div>
         <button
           onClick={searchClasses}
-          className='flex items-center px-4 py-2 bg-orange-600 text-white rounded-md '
+          className='flex items-center px-4 py-2 bg-orange-600 text-white rounded-md'
           disabled={loading}
         >
           {loading ? (
@@ -102,16 +102,18 @@ function FilterComponent() {
       </div>
 
       {showFilters && (
-        <div className='filters absolute top-0 right-0 mt-12 w-60 p-4 bg-white border rounded-md shadow-lg z-10 transform transition-transform duration-200 ease-in-out sm:mt-10 sm:left-48 sm:w-64'>
+        <div className='filters absolute top-12 right-4 w-60 p-4 bg-white border rounded-md shadow-lg z-10 transform transition-transform duration-200 ease-in-out sm:left-0 sm:w-full sm:mt-4 sm:px-2'>
           <div className='grid grid-cols-1 gap-3'>
             <input
               type='date'
+              placeholder='Select Date'
               value={selectedDate}
               onChange={(e) => setSelectedDate(e.target.value)}
               className='p-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-600 w-full'
             />
             <input
               type='time'
+              placeholder='Select Time'
               value={selectedTime}
               onChange={(e) => setSelectedTime(e.target.value)}
               className='p-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-600 w-full'
@@ -133,7 +135,7 @@ function FilterComponent() {
           </div>
           <button
             onClick={fetchFilteredClasses}
-            className='w-full mt-4 px-4 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-600'
+            className='w-full mt-4 px-4 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-500'
             disabled={loading}
           >
             {loading ? (
@@ -152,7 +154,7 @@ function FilterComponent() {
           <div className='w-10 h-10 border-4 border-t-transparent border-white rounded-full animate-spin'></div>
         </div>
       ) : (
-        <div className='class-grid grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-4 gap-8 mt-4 mx-3'>
+        <div className='class-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-4 mx-3'>
           {classes.length > 0 ? (
             classes.map((classData) => (
               <ClassCard key={classData._id} classData={classData} isBookable />
