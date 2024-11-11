@@ -1,10 +1,14 @@
 # IMPORTANT NOTE:
 
-### **For making payment kindly use the below test account, as the paypal account used is a test sandbox account. Other accounts might not work.**
+### **1.For making payment kindly use the below test account, as the paypal account used is a test sandbox account. Other accounts might not work.**
 
 **Email:** ``` sb-iwnre33786275@business.example.com ```
 
 **Password:** ``` Ype<8a+7 ```
+
+### 2.If you did not receive any mails regarding signup,class booking, class cancelling, class rescheduling then please make sure to check for the mail in your spam collection.
+
+### 3.Due to the use of a free-tier Render account, the backend server may enter an inactive state during periods of low activity. This may introduce a delay in response time, as Render notes: "Your free instance will spin down with inactivity, which can delay requests by 50 seconds or more." Kindly allow a brief waiting period, and a refresh may be required to ensure the server response is received. 
 
 
 # Project Overview
@@ -13,7 +17,7 @@ FitPro is designed to provide a seamless experience for both fitness enthusiasts
 
 ## Table of Contents
 
-1. [Features](#features)
+1. [Project Features](#features)
 2. [Tech Stack](#tech-stack)
 3. [Installation and Setup](#installation-and-setup)
 4. [Project Structure](#project-structure)
@@ -26,17 +30,55 @@ FitPro is designed to provide a seamless experience for both fitness enthusiasts
 
 
     
-## 1.Features
+## 1.Project Features
 
-1.**User Registration and Authentication:** Users can sign up, log in, and manage their profiles.
-2.**Email Recovery feature:** In case the user forgets his/her password then it can se reset easily
-3.**Trainer Registration and Management:** Trainers can register, create, and manage classes, update their profiles, and track earnings.
-4.**Class Booking:** Users can browse classes by trainer, book them based on availability, and cancel bookings if necessary.
-5.**Payment Gateway:** Payment Integration with Paypal.
-6.**Ratings and Reviews:** Users can leave reviews and ratings for classes, helping others make informed decisions.
-7.**Notifications:** Real-time notifications for class confirmations, cancellations, and reminders through email.
-8.**Feedback and Review System:** Users can leave feedback on classes.
-9.**Responsive Design:** Optimized for all devices with a user-friendly experience on desktop and mobile.
+#### (i)**Authentication Features**
+   - **User Registration and Login**: Allows users to sign up and securely log in to their accounts.
+   - **Forgot Password**: Sends a password reset link to the user’s email to enable easy recovery.
+   - **Email Recovery**: Users can reset their passwords via a secure email link.
+   - **Profile Management**: Allows users to update their profile information, including changing their profile picture.
+
+#### (ii)**User Features**
+   - **Class Browsing and Search**:
+     - Search and filter classes based on categories such as class type, time, and trainer.
+     - Search and filter trainers based on specialization, ratings, or availability.
+   - **Class Booking**:
+     - Users can book classes with trainers based on availability.
+     - Option to cancel bookings if necessary, with relevant cancellation policies.
+   - **Payments**:
+     - Integration with PayPal for secure class booking payments.
+   - **Ratings and Reviews**:
+     - Users can leave reviews and ratings for classes, helping others make informed decisions.
+   - **Notifications**:
+     - Receive email notifications for class confirmations, cancellations, and reminders.
+   - **Feedback**:
+     - Users can leave feedback on classes to share their experience.
+   - **Profile Customization**:
+     - Update profile details such as profile picture and personal information.
+   - **Booking Management**:
+     - Option to view and manage booked classes with the ability to cancel.
+
+#### (iii)**Trainer Features**
+   - **Trainer Registration**:
+     - Trainers can create accounts to join the platform and list their services.
+   - **Class Creation and Management**:
+     - Trainers can create new classes, including uploading relevant photos.
+     - Ability to reschedule or cancel classes, with an automatic refund initiation upon class cancellation.
+   - **Earnings Tracking**:
+     - Track earnings per class and view financial summaries.
+   - **Profile Management**:
+     - Create a detailed profile, including uploading profile and class images.
+     - Update specialization, experience, bio, and certifications.
+   - **Class Rescheduling and Cancellation**:
+     - Trainers can reschedule classes or cancel them if necessary, with appropriate notifications sent to booked users.
+
+#### (iv)**Additional Features**
+   - **Real-Time Notifications**:
+     - Email notifications for reminders, confirmations, and cancellations.
+   - **Responsive Design**:
+     - Optimized for desktop and mobile for a seamless user experience.
+   - **Search and Filter Options**:
+     - Comprehensive filters for users to find suitable trainers and classes based on preferences.
 
 
 
@@ -541,7 +583,9 @@ The **Payment Controller** manages PayPal payment processing and booking creatio
 
 ## 8.Postman Documentation
 
+[Postman Documentation link](https://documenter.getpostman.com/view/37037972/2sAY52dfQv)
 
+Press the above link to view the API documentation.
 
 ## 9. Deployment
 
