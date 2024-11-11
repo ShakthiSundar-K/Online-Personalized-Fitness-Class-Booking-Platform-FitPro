@@ -1,14 +1,14 @@
 # IMPORTANT NOTE:
 
-### **1.For making payment kindly use the below test account, as the paypal account used is a test sandbox account. Other accounts might not work.**
+### **1. For making payment kindly use the below test account, as the paypal account used is a test sandbox account. Other accounts might not work.**
 
 **Email:** ``` sb-iwnre33786275@business.example.com ```
 
 **Password:** ``` Ype<8a+7 ```
 
-### 2.If you did not receive any mails regarding signup,class booking, class cancelling, class rescheduling then please make sure to check for the mail in your spam collection.
+### 2. If you did not receive any mails regarding signup,class booking, class cancelling, class rescheduling then please make sure to check for the mail in your spam collection.
 
-### 3.Due to the use of a free-tier Render account, the backend server may enter an inactive state during periods of low activity. This may introduce a delay in response time, as Render notes: "Your free instance will spin down with inactivity, which can delay requests by 50 seconds or more." Kindly allow a brief waiting period, and a refresh may be required to ensure the server response is received. 
+### 3. Due to the use of a free-tier Render account, the backend server may enter an inactive state during periods of low activity. This may introduce a delay in response time, as Render notes: "Your free instance will spin down with inactivity, which can delay requests by 50 seconds or more." Kindly allow a brief waiting period, and a refresh may be required to ensure the server response is received. 
 
 
 # Project Overview
