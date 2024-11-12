@@ -187,7 +187,7 @@ The basic structure of the `fitpro` repository is organized as follows:
 ```
 backend/
 ├── src/
-│   ├── controllers/             # Logic for API endpoints (auth, classes, trainers, etc.)
+│   ├── controllers/             # Logic for API endpoints (auth, users, trainers, admin)
 │   ├── middlewares/             # Middleware functions for auth, validation, etc.
 │   ├── models/                  # Mongoose schemas for database collections
 │   ├── routes/                  # Express routes for API endpoints
@@ -206,9 +206,9 @@ frontend/
 │   ├── components/              # Reusable UI components (NavBar, ClassCard, etc.)
 │   ├── pages/                   # React pages (Home, Profile, ClassList)
 │   ├── hooks/                   # Custom React hooks
-│   ├── styles/                  # TailwindCSS configurations
+│   ├── routes/                  # Page Routing
 │   ├── utils/                   # Helper functions (API calls, date formatting)
-│   ├── App.js                   # Main component rendering the application
+│   ├── App.jsx                  # Main component rendering the application
 │   └── main.jsx                 # Entry point of the React app
 └── .env                         # Frontend environment variables
 
